@@ -4,27 +4,21 @@ metadata:
   name: postgres
   namespace: flux-system
 spec:
-  interval: 5m0s
+  interval: 5m
   chart:
     spec:
       chart: postgresql
+      version: 15.2.2  # <-- pick a stable version from Bitnami's repo
       sourceRef:
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
   targetNamespace: database
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    remediation:
-      retries: 3
-      remediateLastFailure: true
   values:
     auth:
       username: appuser
       database: appdb
-      existingSecret: postgres-auth   # Passwords delivered via Secret manifest.
+      existingSecret: postgres-auth
     primary:
       persistence:
         size: 8Gi
