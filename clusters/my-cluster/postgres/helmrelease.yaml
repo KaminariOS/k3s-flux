@@ -27,3 +27,4 @@ spec:
       image:
         repository: docker.io/bitnami/os-shell
         tag: latest # <-- fixed tag
+        pullSecrets: []
