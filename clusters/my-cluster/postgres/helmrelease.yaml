@@ -24,3 +24,6 @@ spec:
         size: 8Gi
     volumePermissions:
       enabled: true
+      image:
+        repository: docker.io/bitnami/os-shell
+        tag: latest # <-- fixed tag
