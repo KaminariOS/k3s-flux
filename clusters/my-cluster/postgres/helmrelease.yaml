@@ -25,6 +25,6 @@ spec:
     volumePermissions:
       enabled: true
       image:
-        repository: docker.io/bitnami/os-shell
+        repository: bitnami/os-shell
         tag: latest # <-- fixed tag
         pullSecrets: []
