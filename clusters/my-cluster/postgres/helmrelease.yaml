@@ -8,7 +8,6 @@ spec:
   chart:
     spec:
       chart: postgresql
-      version: 15.5.12    # Update to the chart version you intend to run.
       sourceRef:
         kind: HelmRepository
         name: bitnami
@@ -25,7 +24,7 @@ spec:
     auth:
       username: appuser
       database: appdb
-      existingSecret: postgres-auth   # Create this Secret with your password/replication settings.
+      existingSecret: postgres-auth   # Passwords delivered via Secret manifest.
     primary:
       persistence:
         size: 8Gi
