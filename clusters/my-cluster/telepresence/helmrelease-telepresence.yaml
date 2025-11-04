@@ -1,19 +1,15 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: traffic-manager
   namespace: ambassador
 spec:
   interval: 5m
-  chart:
-    spec:
-      chart: telepresence-oss
-      sourceRef:
-        kind: OCIRepository
-        name: telepresence-oss
-        namespace: ambassador
-      # Pin the Helm chart version to match the Telepresence client.
-      version: v2.25.0
+  chartRef:
+    apiVersion: source.toolkit.fluxcd.io/v1
+    kind: OCIRepository
+    name: telepresence-oss
+    namespace: ambassador
   valuesFrom:
     - kind: ConfigMap
       name: traffic-manager-values
