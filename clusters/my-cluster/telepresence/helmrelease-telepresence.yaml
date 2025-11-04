@@ -5,11 +5,13 @@ metadata:
   namespace: ambassador
 spec:
   interval: 5m
-  chartRef:
-    apiVersion: source.toolkit.fluxcd.io/v1
-    kind: OCIRepository
-    name: telepresence-oss
-    namespace: ambassador
+  chart:
+    spec:
+      chart: telepresence
+      sourceRef:
+        kind: OCIRepository
+        name: telepresence-oss
+        namespace: ambassador
   valuesFrom:
     - kind: ConfigMap
       name: traffic-manager-values
