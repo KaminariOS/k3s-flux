@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: ambassador
 resources:
   - namespace.yaml
-  - ocirepository-telepresence.yaml
+  - helmrepository-telepresence.yaml
   - helmrelease-telepresence.yaml
 configMapGenerator:
   - name: traffic-manager-values
