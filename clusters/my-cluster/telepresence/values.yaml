@@ -1,0 +1,5 @@
+namespaces:
+  - dev
+  - staging
+logLevel: info
+# etc depending on your config

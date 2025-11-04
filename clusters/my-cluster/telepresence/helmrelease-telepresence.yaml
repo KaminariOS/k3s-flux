@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traffic-manager
+  namespace: ambassador
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: telepresence-oss
+      source: oci
+      # repo is ghcr.io/telepresenceio
+      # maybe version: v2.25.0 (match client)
+      version: v2.25.0
+      url: oci://ghcr.io/telepresenceio/telepresence-oss
+  valuesFrom:
+    - kind: ConfigMap
+      name: traffic-manager-values
+      valuesKey: values.yaml
