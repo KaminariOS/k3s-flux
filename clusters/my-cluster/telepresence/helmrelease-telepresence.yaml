@@ -8,11 +8,12 @@ spec:
   chart:
     spec:
       chart: telepresence-oss
-      source: oci
-      # repo is ghcr.io/telepresenceio
-      # maybe version: v2.25.0 (match client)
+      sourceRef:
+        kind: OCIRepository
+        name: telepresence-oss
+        namespace: ambassador
+      # Pin the Helm chart version to match the Telepresence client.
       version: v2.25.0
-      url: oci://ghcr.io/telepresenceio/telepresence-oss
   valuesFrom:
     - kind: ConfigMap
       name: traffic-manager-values
