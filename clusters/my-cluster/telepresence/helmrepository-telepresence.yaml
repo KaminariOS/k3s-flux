@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: telepresence-oss
+  namespace: ambassador
+spec:
+  url: https://app.getambassador.io
+  interval: 5m

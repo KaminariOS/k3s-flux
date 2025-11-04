@@ -9,7 +9,7 @@ spec:
     spec:
       chart: telepresence
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository
         name: telepresence-oss
         namespace: ambassador
   valuesFrom:
