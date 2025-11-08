@@ -28,6 +28,6 @@ spec:
           memory: 1Gi
           cpu: 500m
       image:
-        repository: docker.io/bitnami/kafka
+        repository: bitnami/kafka
         tag: latest # ✅ set your working image tag here
         pullPolicy: IfNotPresent
