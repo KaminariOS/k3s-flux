@@ -13,17 +13,17 @@ spec:
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
-    values:
-        replicaCount: 3
-        persistence:
-          enabled: true
-          size: 10Gi
-        service:
-          type: ClusterIP
-        resources:
-          requests:
-            memory: 512Mi
-            cpu: 250m
-          limits:
-            memory: 1Gi
-            cpu: 500m
+  values:
+      replicaCount: 3
+      persistence:
+        enabled: true
+        size: 10Gi
+      service:
+        type: ClusterIP
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: 250m
+        limits:
+          memory: 1Gi
+          cpu: 500m
