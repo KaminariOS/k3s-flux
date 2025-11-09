@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: telepresence
+      chart: telepresence-oss
       version: "2.25.0"
       sourceRef:
         kind: HelmRepository
