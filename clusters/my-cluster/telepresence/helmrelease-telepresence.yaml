@@ -8,6 +8,7 @@ spec:
   chart:
     spec:
       chart: telepresence
+      version: "2.25.0"
       sourceRef:
         kind: HelmRepository
         name: telepresence-oss
