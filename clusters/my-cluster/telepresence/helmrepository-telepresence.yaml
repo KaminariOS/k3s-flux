@@ -4,6 +4,6 @@ metadata:
   name: telepresence-oss
   namespace: ambassador
 spec:
-  url: oci://ghcr.io/telepresenceio/telepresence-oss
+  url: oci://ghcr.io/telepresenceio
   type: oci
   interval: 5m
