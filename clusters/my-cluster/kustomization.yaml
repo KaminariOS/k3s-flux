@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - flux-system
   - postgres
-  - telepresence
+  # - telepresence
   - redis
   - kafka
