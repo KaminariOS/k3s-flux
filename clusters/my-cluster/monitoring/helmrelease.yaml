@@ -43,3 +43,17 @@ spec:
     kubeEtcd:
       enabled: false
     kubeProxy:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    prometheus:
+      prometheusSpec:
+        retention: 15d
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 20Gi
