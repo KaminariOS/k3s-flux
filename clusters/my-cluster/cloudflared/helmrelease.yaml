@@ -5,6 +5,9 @@ metadata:
   namespace: cloudflare-tunnel-ingress-controller
 spec:
   interval: 1h
+  values:
+    cloudflared:
+      protocol: http2
   chart:
     spec:
       chart: cloudflare-tunnel-ingress-controller
