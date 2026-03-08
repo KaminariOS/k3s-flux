@@ -6,3 +6,4 @@ resources:
   - helmrelease.yaml
   - status-ingress.yaml
   - grafana-ingress.yaml
+  - echo-ingress.yaml
