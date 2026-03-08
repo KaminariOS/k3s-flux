@@ -4536,6 +4536,7 @@ spec:
         - mountPath: /tmp
           name: tmp
       nodeSelector:
+        kubernetes.io/hostname: oracle
         kubernetes.io/os: linux
       priorityClassName: system-cluster-critical
       securityContext:
@@ -6014,6 +6015,7 @@ spec:
         - mountPath: /tmp
           name: temp
       nodeSelector:
+        kubernetes.io/hostname: oracle
         kubernetes.io/os: linux
       priorityClassName: system-cluster-critical
       securityContext:
@@ -8751,6 +8753,7 @@ spec:
         - mountPath: /tmp
           name: temp
       nodeSelector:
+        kubernetes.io/hostname: oracle
         kubernetes.io/os: linux
       priorityClassName: system-cluster-critical
       securityContext:
@@ -10183,6 +10186,7 @@ spec:
         - mountPath: /tmp
           name: temp
       nodeSelector:
+        kubernetes.io/hostname: oracle
         kubernetes.io/os: linux
       securityContext:
         fsGroup: 1337
