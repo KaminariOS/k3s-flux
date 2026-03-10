@@ -4,7 +4,8 @@ resources:
   - flux-system
   - cloudflared
   - monitoring
-  - postgres
+  - cnpg-operator
+  - cnpg
   # - telepresence
   - redis
   - kafka

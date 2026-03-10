@@ -3,5 +3,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secret.yaml
-  - helmrepository.yaml
-  - helmrelease.yaml
+  - cluster.yaml
