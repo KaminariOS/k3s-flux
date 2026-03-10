@@ -16,7 +16,7 @@ data:
         identifiers:
           name: oidc-example
         attrs:
-          authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-explicit-consent]]
+          authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
           invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
           client_type: confidential
           client_id: !Env [OAUTH2_PROXY_CLIENT_ID, oidc-example]
