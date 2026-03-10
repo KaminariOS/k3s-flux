@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oidc-example
+  namespace: authentik
+spec:
+  ingressClassName: cloudflare-tunnel
+  rules:
+    - host: oidc.kosumi.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: oidc-example
+                port:
+                  number: 80

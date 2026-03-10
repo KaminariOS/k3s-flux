@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oidc-example-localhost
+  namespace: authentik
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: authentik-strip-localhost-oidc@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /oidc
+            pathType: Prefix
+            backend:
+              service:
+                name: oidc-example
+                port:
+                  number: 80

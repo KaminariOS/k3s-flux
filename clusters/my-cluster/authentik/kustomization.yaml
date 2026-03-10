@@ -3,6 +3,14 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secret.yaml
+  - oidc-example-secret.yaml
+  - oidc-example-blueprint-configmap.yaml
   - helmrepository.yaml
   - helmrelease.yaml
   - ingress.yaml
+  - oidc-example-deployment.yaml
+  - oidc-example-service.yaml
+  - oidc-example-localhost-middleware.yaml
+  - oidc-example-localhost-ingress.yaml
+  - oidc-example-localhost-oauth2-ingress.yaml
+  - oidc-example-ingress.yaml

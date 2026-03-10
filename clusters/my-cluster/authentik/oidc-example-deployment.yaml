@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oidc-example
+  namespace: authentik
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oidc-example
+  template:
+    metadata:
+      labels:
+        app: oidc-example
+    spec:
+      containers:
+        - name: oauth2-proxy
+          image: quay.io/oauth2-proxy/oauth2-proxy:v7.12.0
+          imagePullPolicy: IfNotPresent
+          args:
+            - --http-address=0.0.0.0:4180
+            - --provider=oidc
+            - --oidc-issuer-url=https://authentik.kosumi.dev/application/o/oidc-example/
+            - --reverse-proxy=true
+            - --email-domain=*
+            - --upstream=http://rust-hello.default.svc.cluster.local:3000/
+            - --cookie-secure=false
+            - --cookie-refresh=1h
+            - --scope=openid profile email
+            - --skip-provider-button=true
+            - --whitelist-domain=localhost
+            - --whitelist-domain=localhost:80
+            - --whitelist-domain=oidc.kosumi.dev
+            - --pass-access-token=true
+            - --pass-authorization-header=true
+            - --set-xauthrequest=true
+          envFrom:
+            - secretRef:
+                name: oidc-example-oauth2-proxy
+          ports:
+            - name: http
+              containerPort: 4180
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: http
+          resources:
+            requests:
+              cpu: 25m
+              memory: 64Mi
+            limits:
+              memory: 128Mi
