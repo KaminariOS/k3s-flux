@@ -1,0 +1,59 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: authentik
+spec:
+  interval: 10m
+  timeout: 15m
+  chart:
+    spec:
+      chart: authentik
+      version: "2026.2.1"
+      sourceRef:
+        kind: HelmRepository
+        name: authentik
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 3
+      remediateLastFailure: true
+      strategy: rollback
+  values:
+    authentik:
+      existingSecret:
+        secretName: authentik-config
+    postgresql:
+      enabled: false
+    server:
+      replicas: 1
+      ingress:
+        enabled: false
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          namespace: monitoring
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          memory: 512Mi
+    worker:
+      replicas: 1
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          namespace: monitoring
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          memory: 512Mi
