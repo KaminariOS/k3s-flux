@@ -20,7 +20,12 @@ spec:
           args:
             - --http-address=0.0.0.0:4180
             - --provider=oidc
-            - --oidc-issuer-url=http://localhost/application/o/oidc-example/
+            - --oidc-issuer-url=http://localhost/
+            - --skip-oidc-discovery=true
+            - --login-url=http://localhost/application/o/authorize/
+            - --redeem-url=http://authentik-server.authentik.svc.cluster.local/application/o/token/
+            - --oidc-jwks-url=http://authentik-server.authentik.svc.cluster.local/application/o/oidc-example/jwks/
+            - --validate-url=http://authentik-server.authentik.svc.cluster.local/application/o/userinfo/
             - --reverse-proxy=true
             - --email-domain=*
             - --upstream=http://rust-hello.default.svc.cluster.local:3000/
