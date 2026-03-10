@@ -20,7 +20,7 @@ spec:
           args:
             - --http-address=0.0.0.0:4180
             - --provider=oidc
-            - --oidc-issuer-url=https://authentik.kosumi.dev/application/o/oidc-example/
+            - --oidc-issuer-url=https://authentik.kosumi.dev/
             - --reverse-proxy=true
             - --email-domain=*
             - --upstream=http://rust-hello.default.svc.cluster.local:3000/
