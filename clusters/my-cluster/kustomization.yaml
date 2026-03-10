@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - flux-system
   - cloudflared
+  - localhost-status
   - monitoring
   - infrastructure
   # - telepresence
