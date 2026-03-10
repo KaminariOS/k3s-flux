@@ -24,6 +24,10 @@ spec:
       remediateLastFailure: true
       strategy: rollback
   values:
+    global:
+      envFrom:
+        - secretRef:
+            name: authentik-config
     authentik:
       existingSecret:
         secretName: authentik-config
