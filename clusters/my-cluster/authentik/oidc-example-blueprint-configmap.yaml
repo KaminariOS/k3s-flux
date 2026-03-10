@@ -21,7 +21,7 @@ data:
           client_type: confidential
           client_id: !Env [OAUTH2_PROXY_CLIENT_ID, oidc-example]
           client_secret: !Env [OAUTH2_PROXY_CLIENT_SECRET, null]
-          issuer_mode: global
+          issuer_mode: per_provider
           sub_mode: user_username
           redirect_uris:
             - matching_mode: strict

@@ -20,7 +20,7 @@ spec:
           args:
             - --http-address=0.0.0.0:4180
             - --provider=oidc
-            - --oidc-issuer-url=http://localhost/
+            - --oidc-issuer-url=http://localhost/application/o/oidc-example/
             - --reverse-proxy=true
             - --email-domain=*
             - --upstream=http://rust-hello.default.svc.cluster.local:3000/

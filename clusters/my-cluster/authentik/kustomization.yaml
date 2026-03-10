@@ -7,7 +7,6 @@ resources:
   - oidc-example-blueprint-configmap.yaml
   - helmrepository.yaml
   - helmrelease.yaml
-  - ingress.yaml
   - localhost-ingress.yaml
   - oidc-example-deployment.yaml
   - oidc-example-service.yaml
