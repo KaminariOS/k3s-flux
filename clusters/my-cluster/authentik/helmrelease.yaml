@@ -29,9 +29,12 @@ spec:
         - secretRef:
             name: authentik-config
         - secretRef:
+            name: grafana-oauth
+        - secretRef:
             name: oidc-example-oauth2-proxy
     blueprints:
       configMaps:
+        - authentik-blueprints-grafana
         - authentik-blueprints-oidc-example
     authentik:
       existingSecret:

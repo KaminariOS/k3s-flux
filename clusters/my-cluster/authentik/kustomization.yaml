@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secret.yaml
+  - grafana-oauth-secret.yaml
+  - grafana-blueprint-configmap.yaml
   - oidc-example-blueprint-configmap.yaml
   - helmrepository.yaml
   - helmrelease.yaml
