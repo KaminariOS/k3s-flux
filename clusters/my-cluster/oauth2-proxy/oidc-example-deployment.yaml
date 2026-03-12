@@ -27,7 +27,7 @@ spec:
             - --redirect-url=http://localhost/oauth2/callback
             - --redeem-url=http://authentik-server.authentik.svc.cluster.local/application/o/token/
             - --oidc-jwks-url=http://authentik-server.authentik.svc.cluster.local/application/o/oidc-example/jwks/
-            - --validate-url=http://authentik-server.authentik.svc.cluster.local/application/o/userinfo/
+            - --profile-url=http://authentik-server.authentik.svc.cluster.local/application/o/userinfo/
             - --reverse-proxy=true
             - --email-domain=*
             - --upstream=http://rust-hello.default.svc.cluster.local:3000/
