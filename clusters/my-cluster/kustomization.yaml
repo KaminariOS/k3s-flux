@@ -4,6 +4,7 @@ resources:
   - flux-system
   - cloudflared
   - localhost-status
+  - oauth2-proxy
   - monitoring
   - infrastructure
   # - telepresence

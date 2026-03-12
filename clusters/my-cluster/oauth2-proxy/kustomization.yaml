@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - oidc-example-secret.yaml
+  - oidc-example-deployment.yaml
+  - oidc-example-service.yaml
+  - oidc-example-localhost-headers-middleware.yaml
+  - oidc-example-localhost-middleware.yaml
+  - oidc-example-localhost-ingress.yaml
+  - oidc-example-localhost-oauth2-ingress.yaml
