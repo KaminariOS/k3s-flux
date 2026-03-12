@@ -19,10 +19,12 @@ spec:
           imagePullPolicy: IfNotPresent
           args:
             - --http-address=0.0.0.0:4180
+            - --proxy-prefix=/oauth2
             - --provider=oidc
             - --oidc-issuer-url=http://authentik-server.authentik.svc.cluster.local/
             - --skip-oidc-discovery=true
             - --login-url=http://localhost/application/o/authorize/
+            - --redirect-url=http://localhost/oauth2/callback
             - --redeem-url=http://authentik-server.authentik.svc.cluster.local/application/o/token/
             - --oidc-jwks-url=http://authentik-server.authentik.svc.cluster.local/application/o/oidc-example/jwks/
             - --validate-url=http://authentik-server.authentik.svc.cluster.local/application/o/userinfo/
