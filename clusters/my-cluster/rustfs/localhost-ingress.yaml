@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: localhost-rustfs
+  namespace: rustfs
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: rustfs-strip-localhost-rustfs@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /rustfs
+            pathType: Prefix
+            backend:
+              service:
+                name: rustfs-svc
+                port:
+                  number: 9001
