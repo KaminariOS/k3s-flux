@@ -1,10 +1,27 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - oidc-example-secret.yaml
-  - oidc-example-deployment.yaml
-  - oidc-example-service.yaml
-  - oidc-example-localhost-headers-middleware.yaml
-  - oidc-example-localhost-middleware.yaml
-  - oidc-example-localhost-ingress.yaml
-  - oidc-example-localhost-oauth2-ingress.yaml
+  - oauth2-proxy-browser-settings.yaml
+  - oauth2-proxy-browser-secret.yaml
+  - oauth2-proxy-browser-deployment.yaml
+  - oauth2-proxy-browser-service.yaml
+  - oauth2-proxy-browser-headers-middleware.yaml
+  - oauth2-proxy-browser-middleware.yaml
+  - oauth2-proxy-browser-ingress.yaml
+  - oauth2-proxy-browser-oauth2-ingress.yaml
+replacements:
+  - source:
+      kind: ConfigMap
+      name: oauth2-proxy-browser-settings
+      fieldPath: data.host
+    targets:
+      - select:
+          kind: Ingress
+          name: oauth2-proxy-browser
+        fieldPaths:
+          - spec.rules.0.host
+      - select:
+          kind: Ingress
+          name: oauth2-proxy-browser-oauth2
+        fieldPaths:
+          - spec.rules.0.host

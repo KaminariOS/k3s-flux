@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oauth2-proxy-browser-settings
+  namespace: authentik
+data:
+  host: localhost

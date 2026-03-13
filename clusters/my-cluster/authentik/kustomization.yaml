@@ -5,7 +5,7 @@ resources:
   - secret.yaml
   - grafana-oauth-secret.yaml
   - grafana-blueprint-configmap.yaml
-  - oidc-example-blueprint-configmap.yaml
+  - oauth2-proxy-browser-blueprint-configmap.yaml
   - helmrepository.yaml
   - helmrelease.yaml
   - localhost-ingress.yaml

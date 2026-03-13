@@ -31,11 +31,11 @@ spec:
         - secretRef:
             name: grafana-oauth
         - secretRef:
-            name: oidc-example-oauth2-proxy
+            name: oauth2-proxy-browser
     blueprints:
       configMaps:
         - authentik-blueprints-grafana
-        - authentik-blueprints-oidc-example
+        - authentik-blueprints-oauth2-proxy-browser
     authentik:
       existingSecret:
         secretName: authentik-config
