@@ -6,8 +6,6 @@ metadata:
 spec:
   interval: 10m
   timeout: 15m
-  upgrade:
-    force: true
   chart:
     spec:
       chart: rustfs
@@ -17,11 +15,10 @@ spec:
         name: rustfs
         namespace: flux-system
   values:
-    replicaCount: 3
     ingress:
       className: traefik
     storageclass:
       name: local-path
     affinity:
       podAntiAffinity:
-        enabled: true
+        enabled: false
