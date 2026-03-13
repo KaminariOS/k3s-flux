@@ -15,10 +15,11 @@ spec:
         name: rustfs
         namespace: flux-system
   values:
+    replicaCount: 3
     ingress:
       className: traefik
     storageclass:
       name: local-path
     affinity:
       podAntiAffinity:
-        enabled: false
+        enabled: true
