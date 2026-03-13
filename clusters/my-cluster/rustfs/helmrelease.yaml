@@ -15,6 +15,11 @@ spec:
         name: rustfs
         namespace: flux-system
   values:
+    mode:
+      standalone:
+        enabled: true
+      distributed:
+        enabled: false
     ingress:
       className: traefik
     storageclass:
