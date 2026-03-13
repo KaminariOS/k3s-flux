@@ -6,6 +6,8 @@ metadata:
 spec:
   interval: 10m
   timeout: 15m
+  upgrade:
+    force: true
   chart:
     spec:
       chart: rustfs
