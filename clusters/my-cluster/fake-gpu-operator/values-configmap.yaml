@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fake-gpu-operator-values
+  namespace: gpu-operator
+data:
+  values.yaml: |
+    topology:
+      nodePools:
+        default:
+          gpuProduct: Tesla-K80
+          gpuCount: 8
+          gpuMemory: 11441
+      nodePoolLabelKey: run.ai/simulated-gpu-node-pool
+
+    environment:
+      resourceReservationNamespace: kai-resource-reservation
+
+    statusUpdater:
+      disableNodeLabeling: true
+
+    draPlugin:
+      enabled: true
