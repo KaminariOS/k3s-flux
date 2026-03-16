@@ -19,5 +19,8 @@ data:
     statusUpdater:
       disableNodeLabeling: true
 
+    runtimeClass:
+      enabled: false
+
     draPlugin:
       enabled: true
