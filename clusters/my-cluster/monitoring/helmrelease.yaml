@@ -39,13 +39,13 @@ spec:
           uid: loki
           type: loki
           access: proxy
-          url: http://loki-gateway.monitoring.svc.cluster.local
+          url: http://monitoring-loki-gateway.monitoring
           isDefault: false
         - name: Tempo
           uid: tempo
           type: tempo
           access: proxy
-          url: http://tempo.monitoring.svc.cluster.local:3200
+          url: http://monitoring-tempo.monitoring:3200
           isDefault: false
           jsonData:
             httpMethod: GET

@@ -51,7 +51,7 @@ spec:
 
           loki.write "default" {
             endpoint {
-              url = "http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push"
+              url = "http://monitoring-loki-gateway.monitoring/loki/api/v1/push"
             }
           }
 
@@ -153,7 +153,7 @@ spec:
 
           otelcol.exporter.otlp "tempo" {
             client {
-              endpoint = "tempo.monitoring.svc.cluster.local:4317"
+              endpoint = "monitoring-tempo.monitoring:4317"
               tls {
                 insecure             = true
                 insecure_skip_verify = true
