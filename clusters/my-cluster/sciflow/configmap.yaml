@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sciflow-config
+  namespace: sciflow
+data:
+  RUST_LOG: info,tower_http=info
+  POD_NAMESPACE: sciflow
+  AUTH_HEADER_USER: x-forwarded-preferred-username
+  AUTH_HEADER_EMAIL: x-forwarded-email
+  AUTH_HEADER_GROUPS: x-forwarded-groups
+  AUTH_HEADER_SUBJECT: x-forwarded-user

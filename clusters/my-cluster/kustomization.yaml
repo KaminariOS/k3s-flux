@@ -12,3 +12,4 @@ resources:
   - kafka
   - fake-gpu-operator
   - rustfs
+  - sciflow

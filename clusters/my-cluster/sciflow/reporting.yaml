@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sciflow-reporting
+  namespace: sciflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: reporting
+      app.kubernetes.io/part-of: sciflow
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: reporting
+        app.kubernetes.io/part-of: sciflow
+    spec:
+      containers:
+        - name: reporting
+          image: ghcr.io/yuanwuzhi/sciflow-reporting:latest
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: sciflow-config
+          env:
+            - name: BIND_ADDR
+              value: 0.0.0.0:8080
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sciflow-reporting
+  namespace: sciflow
+spec:
+  selector:
+    app.kubernetes.io/name: reporting
+    app.kubernetes.io/part-of: sciflow
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
