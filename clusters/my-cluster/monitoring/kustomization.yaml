@@ -3,7 +3,11 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - grafana-oauth-secret.yaml
+  - helmrepository-grafana.yaml
   - helmrepository.yaml
   - helmrelease.yaml
+  - loki-helmrelease.yaml
+  - tempo-helmrelease.yaml
+  - alloy-helmrelease.yaml
   - localhost-grafana-middleware.yaml
   - localhost-grafana-ingress.yaml

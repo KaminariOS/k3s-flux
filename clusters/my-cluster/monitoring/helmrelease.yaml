@@ -34,6 +34,23 @@ spec:
     grafana:
       enabled: true
       envFromSecret: grafana-oauth
+      additionalDataSources:
+        - name: Loki
+          uid: loki
+          type: loki
+          access: proxy
+          url: http://loki-gateway.monitoring.svc.cluster.local
+          isDefault: false
+        - name: Tempo
+          uid: tempo
+          type: tempo
+          access: proxy
+          url: http://tempo.monitoring.svc.cluster.local:3200
+          isDefault: false
+          jsonData:
+            httpMethod: GET
+            nodeGraph:
+              enabled: true
       grafana.ini:
         server:
           domain: localhost
