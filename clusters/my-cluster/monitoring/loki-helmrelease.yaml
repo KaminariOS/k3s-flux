@@ -44,7 +44,7 @@ spec:
         enabled: true
         size: 20Gi
     lokiCanary:
-      enabled: false
+      enabled: true
     backend:
       replicas: 0
     read:
