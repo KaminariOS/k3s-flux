@@ -97,6 +97,11 @@ spec:
           loki.process "pod_logs" {
             forward_to = [loki.write.default.receiver]
 
+            stage.drop {
+              older_than          = "168h"
+              drop_counter_reason = "too_old"
+            }
+
             stage.static_labels {
               values = {
                 cluster = "my-cluster",
