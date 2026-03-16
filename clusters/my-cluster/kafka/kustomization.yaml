@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: kafka
 resources:
   - namespace.yaml
-  - helmrepository.yaml
+  - ocirepository.yaml
   - helmrelease.yaml

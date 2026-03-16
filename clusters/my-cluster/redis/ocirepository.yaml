@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: redis
+spec:
+  interval: 1h
+  url: oci://registry-1.docker.io/bitnamicharts/redis
+  ref:
+    semver: "23.2.12"
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
