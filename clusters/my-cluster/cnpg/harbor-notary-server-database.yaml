@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: harbor-notary-server
+  namespace: database
+spec:
+  name: harbor_notary_server
+  owner: appuser
+  cluster:
+    name: postgres

@@ -11,5 +11,6 @@ resources:
   - redis
   - kafka
   - fake-gpu-operator
+  - harbor
   - rustfs
   - sciflow

@@ -4,3 +4,6 @@ resources:
   - namespace.yaml
   - secret.yaml
   - cluster.yaml
+  - harbor-core-database.yaml
+  - harbor-notary-server-database.yaml
+  - harbor-notary-signer-database.yaml

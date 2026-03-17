@@ -1,0 +1,79 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: harbor
+  namespace: harbor
+spec:
+  interval: 10m
+  timeout: 15m
+  releaseName: harbor
+  chart:
+    spec:
+      chart: harbor
+      version: "1.18.0"
+      sourceRef:
+        kind: HelmRepository
+        name: harbor
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      retries: 3
+      remediateLastFailure: true
+      strategy: rollback
+  valuesFrom:
+    - kind: Secret
+      name: harbor-db
+      valuesKey: host
+      targetPath: database.external.host
+    - kind: Secret
+      name: harbor-db
+      valuesKey: port
+      targetPath: database.external.port
+    - kind: Secret
+      name: harbor-db
+      valuesKey: username
+      targetPath: database.external.username
+    - kind: Secret
+      name: harbor-db
+      valuesKey: password
+      targetPath: database.external.password
+    - kind: Secret
+      name: harbor-db
+      valuesKey: coreDatabase
+      targetPath: database.external.coreDatabase
+    - kind: Secret
+      name: harbor-db
+      valuesKey: notaryServerDatabase
+      targetPath: database.external.notaryServerDatabase
+    - kind: Secret
+      name: harbor-db
+      valuesKey: notarySignerDatabase
+      targetPath: database.external.notarySignerDatabase
+    - kind: Secret
+      name: harbor-db
+      valuesKey: sslmode
+      targetPath: database.external.sslmode
+  values:
+    externalURL: http://harbor.localhost
+    expose:
+      type: clusterIP
+      tls:
+        enabled: false
+    database:
+      type: external
+    persistence:
+      enabled: true
+      resourcePolicy: keep
+      persistentVolumeClaim:
+        registry:
+          size: 20Gi
+        jobservice:
+          size: 1Gi
+        redis:
+          size: 1Gi
+        trivy:
+          size: 5Gi
