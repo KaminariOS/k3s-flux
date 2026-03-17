@@ -6,6 +6,8 @@ metadata:
 data:
   RUST_LOG: info,tower_http=info
   POD_NAMESPACE: sciflow
+  IMAGE_REGISTRY_HOST: harbor-registry.harbor.svc.cluster.local:5000
+  REGISTRY_BASE_URL: http://harbor-registry.harbor.svc.cluster.local:5000
   AUTH_HEADER_USER: x-forwarded-preferred-username
   AUTH_HEADER_EMAIL: x-forwarded-email
   AUTH_HEADER_GROUPS: x-forwarded-groups
