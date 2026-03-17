@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - configmap.yaml
+  - secret.yaml
   - gateway.yaml
   - orchestrator.yaml
   - policy.yaml
