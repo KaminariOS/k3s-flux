@@ -15,6 +15,7 @@ spec:
         app.kubernetes.io/name: operations
         app.kubernetes.io/part-of: sciflow
     spec:
+      serviceAccountName: sciflow-operations
       containers:
         - name: operations
           image: ghcr.io/yuanwuzhi/sciflow-operations:latest
@@ -22,6 +23,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: sciflow-config
+            - secretRef:
+                name: sciflow-operations-db
           env:
             - name: BIND_ADDR
               value: 0.0.0.0:8080
@@ -50,3 +53,36 @@ spec:
     - name: http
       port: 80
       targetPort: http
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sciflow-operations
+  namespace: sciflow
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sciflow-operations
+  namespace: sciflow
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sciflow-operations
+  namespace: sciflow
+subjects:
+  - kind: ServiceAccount
+    name: sciflow-operations
+    namespace: sciflow
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: sciflow-operations
