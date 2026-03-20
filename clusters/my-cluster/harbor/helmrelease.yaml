@@ -31,8 +31,7 @@ spec:
       targetPath: database.external.host
     - kind: Secret
       name: harbor-oidc
-      valuesKey: configureUserSettings
-      targetPath: core.configureUserSettings
+      valuesKey: values.yaml
     - kind: Secret
       name: harbor-db
       valuesKey: port
