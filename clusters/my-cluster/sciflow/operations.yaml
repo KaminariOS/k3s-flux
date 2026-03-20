@@ -20,7 +20,7 @@ spec:
         - name: sciflow-ghcr
       containers:
         - name: operations
-          image: ghcr.io/yuanwuzhi/sciflow-operations:fix-20260320-0152
+          image: ghcr.io/yuanwuzhi/sciflow-operations:fix-20260319-231529
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
