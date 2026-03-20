@@ -15,6 +15,13 @@ spec:
         app.kubernetes.io/name: images
         app.kubernetes.io/part-of: sciflow
     spec:
+      serviceAccountName: sciflow-operations
+      imagePullSecrets:
+        - name: sciflow-ghcr
+      volumes:
+        - name: registry-auth
+          secret:
+            secretName: sciflow-registry-auth
       containers:
         - name: images
           image: ghcr.io/yuanwuzhi/sciflow-images:latest
@@ -33,6 +40,10 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+          volumeMounts:
+            - name: registry-auth
+              mountPath: /run/sciflow/registry-auth
+              readOnly: true
           readinessProbe:
             httpGet:
               path: /readyz

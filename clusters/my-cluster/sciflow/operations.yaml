@@ -16,9 +16,11 @@ spec:
         app.kubernetes.io/part-of: sciflow
     spec:
       serviceAccountName: sciflow-operations
+      imagePullSecrets:
+        - name: sciflow-ghcr
       containers:
         - name: operations
-          image: ghcr.io/yuanwuzhi/sciflow-operations:latest
+          image: ghcr.io/yuanwuzhi/sciflow-operations:fix-20260320-0152
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
@@ -59,6 +61,8 @@ kind: ServiceAccount
 metadata:
   name: sciflow-operations
   namespace: sciflow
+imagePullSecrets:
+  - name: sciflow-ghcr
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -69,6 +73,9 @@ rules:
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get"]
   - apiGroups: ["batch"]
     resources: ["jobs"]
     verbs: ["create", "get", "list", "watch"]
