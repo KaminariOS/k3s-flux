@@ -34,7 +34,7 @@ spec:
               - op: add
                 path: /spec/template/spec/hostAliases
                 value:
-                  - ip: 10.43.29.164
+                  - ip: 10.42.2.15
                     hostnames:
                       - authentik.localhost
   valuesFrom:
