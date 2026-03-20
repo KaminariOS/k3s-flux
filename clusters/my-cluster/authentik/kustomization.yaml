@@ -4,7 +4,9 @@ resources:
   - namespace.yaml
   - secret.yaml
   - grafana-oauth-secret.yaml
+  - harbor-oauth-secret.yaml
   - grafana-blueprint-configmap.yaml
+  - harbor-blueprint-configmap.yaml
   - oauth2-proxy-browser-blueprint-configmap.yaml
   - helmrepository.yaml
   - helmrelease.yaml

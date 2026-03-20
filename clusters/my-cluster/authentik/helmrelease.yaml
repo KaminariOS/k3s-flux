@@ -31,10 +31,13 @@ spec:
         - secretRef:
             name: grafana-oauth
         - secretRef:
+            name: harbor-oauth
+        - secretRef:
             name: oauth2-proxy-browser
     blueprints:
       configMaps:
         - authentik-blueprints-grafana
+        - authentik-blueprints-harbor
         - authentik-blueprints-oauth2-proxy-browser
     authentik:
       existingSecret:

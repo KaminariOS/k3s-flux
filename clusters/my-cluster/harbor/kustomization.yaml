@@ -4,5 +4,8 @@ resources:
   - namespace.yaml
   - helmrepository.yaml
   - db-secret.yaml
+  - oidc-secret.yaml
   - helmrelease.yaml
+  - localhost-harbor-middleware.yaml
+  - localhost-harbor-ingress.yaml
   - ingress.yaml
