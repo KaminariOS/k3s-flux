@@ -24,6 +24,19 @@ spec:
       retries: 3
       remediateLastFailure: true
       strategy: rollback
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              kind: Deployment
+              name: harbor-core
+            patch: |
+              - op: add
+                path: /spec/template/spec/hostAliases
+                value:
+                  - ip: 10.43.20.212
+                    hostnames:
+                      - authentik.localhost
   valuesFrom:
     - kind: Secret
       name: harbor-db
