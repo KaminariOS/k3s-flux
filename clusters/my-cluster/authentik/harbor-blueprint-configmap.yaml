@@ -21,7 +21,7 @@ data:
           client_type: confidential
           client_id: !Env [HARBOR_OAUTH_CLIENT_ID, harbor]
           client_secret: !Env [HARBOR_OAUTH_CLIENT_SECRET, null]
-          issuer_mode: global
+          issuer_mode: per_provider
           sub_mode: user_username
           redirect_uris:
             - matching_mode: strict
