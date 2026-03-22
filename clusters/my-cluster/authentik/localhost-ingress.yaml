@@ -28,3 +28,13 @@ spec:
                 name: authentik-server
                 port:
                   number: 80
+    - host: authentik.100.124.90.107.sslip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: authentik-server
+                port:
+                  number: 80
