@@ -27,11 +27,11 @@ spec:
           envFrom:
             - configMapRef:
                 name: sciflow-config
-            - secretRef:
-                name: sciflow-operations-db
           env:
             - name: BIND_ADDR
               value: 0.0.0.0:8080
+            - name: IMAGES_BASE_URL
+              value: http://10.43.9.3
           ports:
             - name: http
               containerPort: 8080

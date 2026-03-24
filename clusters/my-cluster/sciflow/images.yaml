@@ -34,11 +34,8 @@ spec:
           env:
             - name: BIND_ADDR
               value: 0.0.0.0:8080
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: sciflow-images-db
-                  key: DATABASE_URL
+            - name: POLICY_BASE_URL
+              value: http://10.43.104.223
           ports:
             - name: http
               containerPort: 8080
