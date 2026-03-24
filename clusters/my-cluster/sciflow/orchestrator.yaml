@@ -15,8 +15,11 @@ spec:
         app.kubernetes.io/name: orchestrator
         app.kubernetes.io/part-of: sciflow
     spec:
+      serviceAccountName: sciflow-orchestrator
       imagePullSecrets:
         - name: sciflow-ghcr
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: orchestrator
           image: ghcr.io/yuanwuzhi/sciflow-orchestrator:sha-037d9d91b469
@@ -52,3 +55,60 @@ spec:
     - name: http
       port: 80
       targetPort: http
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sciflow-orchestrator
+  namespace: sciflow
+imagePullSecrets:
+  - name: sciflow-ghcr
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sciflow-orchestrator
+  namespace: sciflow
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services"]
+    verbs: ["get", "list", "watch", "delete"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses"]
+    verbs: ["get", "list", "watch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sciflow-orchestrator
+  namespace: sciflow
+subjects:
+  - kind: ServiceAccount
+    name: sciflow-orchestrator
+    namespace: sciflow
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: sciflow-orchestrator
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: sciflow-orchestrator
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: sciflow-orchestrator
+subjects:
+  - kind: ServiceAccount
+    name: sciflow-orchestrator
+    namespace: sciflow
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: sciflow-orchestrator

@@ -15,6 +15,10 @@ spec:
         app.kubernetes.io/name: gateway
         app.kubernetes.io/part-of: sciflow
     spec:
+      imagePullSecrets:
+        - name: sciflow-ghcr
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: gateway
           image: ghcr.io/yuanwuzhi/sciflow-gateway:latest

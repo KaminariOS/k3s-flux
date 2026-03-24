@@ -15,6 +15,10 @@ spec:
         app.kubernetes.io/name: reporting
         app.kubernetes.io/part-of: sciflow
     spec:
+      imagePullSecrets:
+        - name: sciflow-ghcr
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: reporting
           image: ghcr.io/yuanwuzhi/sciflow-reporting:latest

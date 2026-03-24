@@ -17,6 +17,8 @@ spec:
     spec:
       imagePullSecrets:
         - name: sciflow-ghcr
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: policy
           image: ghcr.io/yuanwuzhi/sciflow-policy:sha-037d9d91b469

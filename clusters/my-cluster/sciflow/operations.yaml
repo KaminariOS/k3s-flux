@@ -18,6 +18,8 @@ spec:
       serviceAccountName: sciflow-operations
       imagePullSecrets:
         - name: sciflow-ghcr
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: operations
           image: ghcr.io/yuanwuzhi/sciflow-operations:fix-20260319-231529
