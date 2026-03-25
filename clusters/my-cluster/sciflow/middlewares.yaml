@@ -1,0 +1,77 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: oauth2-forward-auth
+  namespace: sciflow
+spec:
+  forwardAuth:
+    address: http://oauth2-proxy-browser.authentik.svc.cluster.local/
+    trustForwardHeader: true
+    preserveLocationHeader: true
+    authResponseHeaders:
+      - X-Auth-Request-User
+      - X-Auth-Request-Preferred-Username
+      - X-Auth-Request-Email
+      - X-Auth-Request-Groups
+      - X-Auth-Request-Access-Token
+      - Authorization
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-sciflow-gateway
+  namespace: sciflow
+spec:
+  stripPrefix:
+    prefixes:
+      - /sciflow/gateway
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-sciflow-policy
+  namespace: sciflow
+spec:
+  stripPrefix:
+    prefixes:
+      - /sciflow/policy
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-sciflow-orchestrator
+  namespace: sciflow
+spec:
+  stripPrefix:
+    prefixes:
+      - /sciflow/orchestrator
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-sciflow-images
+  namespace: sciflow
+spec:
+  stripPrefix:
+    prefixes:
+      - /sciflow/images
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-sciflow-operations
+  namespace: sciflow
+spec:
+  stripPrefix:
+    prefixes:
+      - /sciflow/operations
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-sciflow-reporting
+  namespace: sciflow
+spec:
+  stripPrefix:
+    prefixes:
+      - /sciflow/reporting

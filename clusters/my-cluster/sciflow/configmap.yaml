@@ -14,7 +14,7 @@ data:
   IMAGE_WORKER_CONTAINERD_SOCKET_PATH: /run/k3s/containerd/containerd.sock
   IMAGE_WORKER_INSECURE_REGISTRY: "true"
   IMAGE_WORKER_REGISTRY_AUTH_SECRET_NAME: sciflow-registry-auth
-  AUTH_HEADER_USER: x-forwarded-preferred-username
-  AUTH_HEADER_EMAIL: x-forwarded-email
-  AUTH_HEADER_GROUPS: x-forwarded-groups
-  AUTH_HEADER_SUBJECT: x-forwarded-user
+  AUTH_HEADER_USER: x-auth-request-preferred-username
+  AUTH_HEADER_EMAIL: x-auth-request-email
+  AUTH_HEADER_GROUPS: x-auth-request-groups
+  AUTH_HEADER_SUBJECT: x-auth-request-user

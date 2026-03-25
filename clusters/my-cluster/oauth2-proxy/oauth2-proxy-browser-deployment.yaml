@@ -28,7 +28,7 @@ spec:
             - --profile-url=http://authentik-server.authentik.svc.cluster.local/application/o/userinfo/
             - --reverse-proxy=true
             - --email-domain=*
-            - --upstream=http://rust-hello.default.svc.cluster.local:3000/
+            - --upstream=static://202
             - --cookie-secure=false
             - --cookie-refresh=1h
             - --scope=openid profile email
@@ -36,6 +36,7 @@ spec:
             - --insecure-oidc-allow-unverified-email=true
             - --pass-access-token=true
             - --pass-authorization-header=true
+            - --pass-user-headers=true
             - --set-xauthrequest=true
           envFrom:
             - secretRef:

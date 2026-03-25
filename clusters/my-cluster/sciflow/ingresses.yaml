@@ -1,0 +1,131 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sciflow-gateway
+  namespace: sciflow
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: sciflow-oauth2-forward-auth@kubernetescrd,sciflow-strip-sciflow-gateway@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /sciflow/gateway
+            pathType: Prefix
+            backend:
+              service:
+                name: sciflow-gateway
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sciflow-policy
+  namespace: sciflow
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: sciflow-oauth2-forward-auth@kubernetescrd,sciflow-strip-sciflow-policy@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /sciflow/policy
+            pathType: Prefix
+            backend:
+              service:
+                name: sciflow-policy
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sciflow-orchestrator
+  namespace: sciflow
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: sciflow-oauth2-forward-auth@kubernetescrd,sciflow-strip-sciflow-orchestrator@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /sciflow/orchestrator
+            pathType: Prefix
+            backend:
+              service:
+                name: sciflow-orchestrator
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sciflow-images
+  namespace: sciflow
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: sciflow-oauth2-forward-auth@kubernetescrd,sciflow-strip-sciflow-images@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /sciflow/images
+            pathType: Prefix
+            backend:
+              service:
+                name: sciflow-images
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sciflow-operations
+  namespace: sciflow
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: sciflow-oauth2-forward-auth@kubernetescrd,sciflow-strip-sciflow-operations@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /sciflow/operations
+            pathType: Prefix
+            backend:
+              service:
+                name: sciflow-operations
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sciflow-reporting
+  namespace: sciflow
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: sciflow-oauth2-forward-auth@kubernetescrd,sciflow-strip-sciflow-reporting@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /sciflow/reporting
+            pathType: Prefix
+            backend:
+              service:
+                name: sciflow-reporting
+                port:
+                  number: 80

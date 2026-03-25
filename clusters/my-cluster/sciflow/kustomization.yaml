@@ -10,5 +10,5 @@ resources:
   - images.yaml
   - operations.yaml
   - reporting.yaml
-  - localhost-middleware.yaml
-  - localhost-ingress.yaml
+  - middlewares.yaml
+  - ingresses.yaml
