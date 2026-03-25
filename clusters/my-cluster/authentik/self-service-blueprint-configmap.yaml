@@ -11,19 +11,19 @@ data:
       labels:
         blueprints.goauthentik.io/instantiate: "true"
     entries:
-      - model: authentik_flows.flow
-        id: self-service-enrollment-flow
-        identifiers:
-          slug: self-service-enrollment
+      - identifiers:
+          slug: default-enrollment-flow
+        id: flow
+        model: authentik_flows.flow
         attrs:
-          name: Self-service enrollment
-          title: Create your account
+          name: Default enrollment Flow
+          title: Welcome to authentik!
           designation: enrollment
           authentication: require_unauthenticated
-      - model: authentik_stages_prompt.prompt
-        id: self-service-enrollment-field-username
-        identifiers:
-          name: self-service-enrollment-field-username
+      - identifiers:
+          name: default-enrollment-field-username
+        id: prompt-field-username
+        model: authentik_stages_prompt.prompt
         attrs:
           field_key: username
           label: Username
@@ -32,10 +32,10 @@ data:
           placeholder: Username
           placeholder_expression: false
           order: 0
-      - model: authentik_stages_prompt.prompt
-        id: self-service-enrollment-field-password
-        identifiers:
-          name: self-service-enrollment-field-password
+      - identifiers:
+          name: default-enrollment-field-password
+        id: prompt-field-password
+        model: authentik_stages_prompt.prompt
         attrs:
           field_key: password
           label: Password
@@ -43,11 +43,11 @@ data:
           required: true
           placeholder: Password
           placeholder_expression: false
-          order: 1
-      - model: authentik_stages_prompt.prompt
-        id: self-service-enrollment-field-password-repeat
-        identifiers:
-          name: self-service-enrollment-field-password-repeat
+          order: 0
+      - identifiers:
+          name: default-enrollment-field-password-repeat
+        id: prompt-field-password-repeat
+        model: authentik_stages_prompt.prompt
         attrs:
           field_key: password_repeat
           label: Password (repeat)
@@ -55,23 +55,23 @@ data:
           required: true
           placeholder: Password (repeat)
           placeholder_expression: false
-          order: 2
-      - model: authentik_stages_prompt.prompt
-        id: self-service-enrollment-field-name
-        identifiers:
-          name: self-service-enrollment-field-name
+          order: 1
+      - identifiers:
+          name: default-enrollment-field-name
+        id: prompt-field-name
+        model: authentik_stages_prompt.prompt
         attrs:
           field_key: name
           label: Name
           type: text
           required: true
-          placeholder: Full name
+          placeholder: Name
           placeholder_expression: false
           order: 0
-      - model: authentik_stages_prompt.prompt
-        id: self-service-enrollment-field-email
-        identifiers:
-          name: self-service-enrollment-field-email
+      - identifiers:
+          name: default-enrollment-field-email
+        id: prompt-field-email
+        model: authentik_stages_prompt.prompt
         attrs:
           field_key: email
           label: Email
@@ -80,69 +80,69 @@ data:
           placeholder: Email
           placeholder_expression: false
           order: 1
-      - model: authentik_stages_prompt.promptstage
-        id: self-service-enrollment-prompt-credentials
-        identifiers:
-          name: self-service-enrollment-prompt-credentials
-        attrs:
-          fields:
-            - !KeyOf self-service-enrollment-field-username
-            - !KeyOf self-service-enrollment-field-password
-            - !KeyOf self-service-enrollment-field-password-repeat
-      - model: authentik_stages_prompt.promptstage
-        id: self-service-enrollment-prompt-profile
-        identifiers:
-          name: self-service-enrollment-prompt-profile
-        attrs:
-          fields:
-            - !KeyOf self-service-enrollment-field-name
-            - !KeyOf self-service-enrollment-field-email
-      - model: authentik_stages_user_write.userwritestage
-        id: self-service-enrollment-user-write
-        identifiers:
-          name: self-service-enrollment-user-write
-        attrs:
-          user_creation_mode: always_create
-          create_users_as_inactive: true
-      - model: authentik_stages_email.emailstage
-        id: self-service-enrollment-email-verification
-        identifiers:
-          name: self-service-enrollment-email-verification
+      - identifiers:
+          name: default-enrollment-email-verification
+        id: default-enrollment-email-verification
+        model: authentik_stages_email.emailstage
         attrs:
           use_global_settings: true
           template: email/account_confirmation.html
           activate_user_on_success: true
-      - model: authentik_stages_user_login.userloginstage
-        id: self-service-enrollment-user-login
-        identifiers:
-          name: self-service-enrollment-user-login
-      - model: authentik_flows.flowstagebinding
-        identifiers:
-          target: !KeyOf self-service-enrollment-flow
-          stage: !KeyOf self-service-enrollment-prompt-credentials
+      - identifiers:
+          name: default-enrollment-prompt-second
+        id: default-enrollment-prompt-second
+        model: authentik_stages_prompt.promptstage
+        attrs:
+          fields:
+            - !KeyOf prompt-field-name
+            - !KeyOf prompt-field-email
+      - identifiers:
+          name: default-enrollment-prompt-first
+        id: default-enrollment-prompt-first
+        model: authentik_stages_prompt.promptstage
+        attrs:
+          fields:
+            - !KeyOf prompt-field-username
+            - !KeyOf prompt-field-password
+            - !KeyOf prompt-field-password-repeat
+      - identifiers:
+          name: default-enrollment-user-login
+        id: default-enrollment-user-login
+        model: authentik_stages_user_login.userloginstage
+      - identifiers:
+          name: default-enrollment-user-write
+        id: default-enrollment-user-write
+        model: authentik_stages_user_write.userwritestage
+        attrs:
+          create_users_as_inactive: true
+          user_creation_mode: always_create
+      - identifiers:
+          target: !KeyOf flow
+          stage: !KeyOf default-enrollment-prompt-first
           order: 10
-      - model: authentik_flows.flowstagebinding
-        identifiers:
-          target: !KeyOf self-service-enrollment-flow
-          stage: !KeyOf self-service-enrollment-prompt-profile
+        model: authentik_flows.flowstagebinding
+      - identifiers:
+          target: !KeyOf flow
+          stage: !KeyOf default-enrollment-prompt-second
           order: 11
-      - model: authentik_flows.flowstagebinding
-        identifiers:
-          target: !KeyOf self-service-enrollment-flow
-          stage: !KeyOf self-service-enrollment-user-write
+        model: authentik_flows.flowstagebinding
+      - identifiers:
+          target: !KeyOf flow
+          stage: !KeyOf default-enrollment-user-write
           order: 20
-      - model: authentik_flows.flowstagebinding
-        identifiers:
-          target: !KeyOf self-service-enrollment-flow
-          stage: !KeyOf self-service-enrollment-email-verification
+        model: authentik_flows.flowstagebinding
+      - identifiers:
+          target: !KeyOf flow
+          stage: !KeyOf default-enrollment-email-verification
           order: 30
-      - model: authentik_flows.flowstagebinding
-        identifiers:
-          target: !KeyOf self-service-enrollment-flow
-          stage: !KeyOf self-service-enrollment-user-login
+        model: authentik_flows.flowstagebinding
+      - identifiers:
+          target: !KeyOf flow
+          stage: !KeyOf default-enrollment-user-login
           order: 100
+        model: authentik_flows.flowstagebinding
       - model: authentik_stages_identification.identificationstage
         identifiers:
           name: default-authentication-identification
         attrs:
-          enrollment_flow: !KeyOf self-service-enrollment-flow
+          enrollment_flow: !KeyOf flow
