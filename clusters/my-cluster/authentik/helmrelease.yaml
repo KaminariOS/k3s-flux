@@ -39,6 +39,7 @@ spec:
         - authentik-blueprints-grafana
         - authentik-blueprints-harbor
         - authentik-blueprints-oauth2-proxy-browser
+        - authentik-blueprints-self-service
     authentik:
       existingSecret:
         secretName: authentik-config

@@ -1,0 +1,147 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authentik-blueprints-self-service
+  namespace: authentik
+data:
+  self-service.yaml: |
+    version: 1
+    metadata:
+      name: Self-service Signup
+      labels:
+        blueprints.goauthentik.io/instantiate: "true"
+    entries:
+      - model: authentik_flows.flow
+        identifiers:
+          slug: self-service-enrollment
+        attrs:
+          name: Self-service enrollment
+          title: Create your account
+          designation: enrollment
+          authentication: require_unauthenticated
+      - model: authentik_stages_prompt.prompt
+        id: self-service-enrollment-field-username
+        identifiers:
+          name: self-service-enrollment-field-username
+        attrs:
+          field_key: username
+          label: Username
+          type: username
+          required: true
+          placeholder: Username
+          placeholder_expression: false
+          order: 0
+      - model: authentik_stages_prompt.prompt
+        id: self-service-enrollment-field-password
+        identifiers:
+          name: self-service-enrollment-field-password
+        attrs:
+          field_key: password
+          label: Password
+          type: password
+          required: true
+          placeholder: Password
+          placeholder_expression: false
+          order: 1
+      - model: authentik_stages_prompt.prompt
+        id: self-service-enrollment-field-password-repeat
+        identifiers:
+          name: self-service-enrollment-field-password-repeat
+        attrs:
+          field_key: password_repeat
+          label: Password (repeat)
+          type: password
+          required: true
+          placeholder: Password (repeat)
+          placeholder_expression: false
+          order: 2
+      - model: authentik_stages_prompt.prompt
+        id: self-service-enrollment-field-name
+        identifiers:
+          name: self-service-enrollment-field-name
+        attrs:
+          field_key: name
+          label: Name
+          type: text
+          required: true
+          placeholder: Full name
+          placeholder_expression: false
+          order: 0
+      - model: authentik_stages_prompt.prompt
+        id: self-service-enrollment-field-email
+        identifiers:
+          name: self-service-enrollment-field-email
+        attrs:
+          field_key: email
+          label: Email
+          type: email
+          required: true
+          placeholder: Email
+          placeholder_expression: false
+          order: 1
+      - model: authentik_stages_prompt.promptstage
+        id: self-service-enrollment-prompt-credentials
+        identifiers:
+          name: self-service-enrollment-prompt-credentials
+        attrs:
+          fields:
+            - !KeyOf self-service-enrollment-field-username
+            - !KeyOf self-service-enrollment-field-password
+            - !KeyOf self-service-enrollment-field-password-repeat
+      - model: authentik_stages_prompt.promptstage
+        id: self-service-enrollment-prompt-profile
+        identifiers:
+          name: self-service-enrollment-prompt-profile
+        attrs:
+          fields:
+            - !KeyOf self-service-enrollment-field-name
+            - !KeyOf self-service-enrollment-field-email
+      - model: authentik_stages_user_write.userwritestage
+        id: self-service-enrollment-user-write
+        identifiers:
+          name: self-service-enrollment-user-write
+        attrs:
+          user_creation_mode: always_create
+          create_users_as_inactive: true
+      - model: authentik_stages_email.emailstage
+        id: self-service-enrollment-email-verification
+        identifiers:
+          name: self-service-enrollment-email-verification
+        attrs:
+          use_global_settings: true
+          template: email/account_confirmation.html
+          activate_user_on_success: true
+      - model: authentik_stages_user_login.userloginstage
+        id: self-service-enrollment-user-login
+        identifiers:
+          name: self-service-enrollment-user-login
+      - model: authentik_flows.flowstagebinding
+        identifiers:
+          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          stage: !KeyOf self-service-enrollment-prompt-credentials
+          order: 10
+      - model: authentik_flows.flowstagebinding
+        identifiers:
+          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          stage: !KeyOf self-service-enrollment-prompt-profile
+          order: 11
+      - model: authentik_flows.flowstagebinding
+        identifiers:
+          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          stage: !KeyOf self-service-enrollment-user-write
+          order: 20
+      - model: authentik_flows.flowstagebinding
+        identifiers:
+          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          stage: !KeyOf self-service-enrollment-email-verification
+          order: 30
+      - model: authentik_flows.flowstagebinding
+        identifiers:
+          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          stage: !KeyOf self-service-enrollment-user-login
+          order: 100
+      - model: authentik_stages_identification.identificationstage
+        identifiers:
+          name: default-authentication-identification
+        attrs:
+          enrollment_flow: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
