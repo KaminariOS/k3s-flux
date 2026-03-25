@@ -30,7 +30,7 @@ data:
       enabled: false
 
     kwokDraPlugin:
-      enabled: true
+      enabled: false
 
     runtimeClass:
       enabled: false

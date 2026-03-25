@@ -3,4 +3,5 @@ kind: Node
 metadata:
   name: thinker-e8f3f057
   labels:
+    nvidia.com/gpu.deploy.dra-plugin-gpu: "true"
     run.ai/simulated-gpu-node-pool: thinker
