@@ -20,8 +20,17 @@ data:
     environment:
       resourceReservationNamespace: kai-resource-reservation
 
+    devicePlugin:
+      enabled: false
+
     statusUpdater:
       disableNodeLabeling: true
+
+    kwokGpuDevicePlugin:
+      enabled: false
+
+    kwokDraPlugin:
+      enabled: true
 
     runtimeClass:
       enabled: false
