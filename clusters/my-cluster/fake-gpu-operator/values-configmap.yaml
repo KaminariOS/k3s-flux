@@ -7,10 +7,14 @@ data:
   values.yaml: |
     topology:
       nodePools:
-        default:
-          gpuProduct: Tesla-K80
-          gpuCount: 8
-          gpuMemory: 11441
+        savior:
+          gpuProduct: NVIDIA-H100
+          gpuCount: 2
+          gpuMemory: 81920
+        thinker:
+          gpuProduct: NVIDIA-H200
+          gpuCount: 3
+          gpuMemory: 143360
       nodePoolLabelKey: run.ai/simulated-gpu-node-pool
 
     environment:

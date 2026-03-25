@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - resource-reservation-namespace.yaml
+  - savior-node.yaml
+  - thinker-node.yaml
   - helmrepository.yaml
   - helmrelease.yaml
   - values-configmap.yaml
