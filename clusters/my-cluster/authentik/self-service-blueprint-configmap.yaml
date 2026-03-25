@@ -12,6 +12,7 @@ data:
         blueprints.goauthentik.io/instantiate: "true"
     entries:
       - model: authentik_flows.flow
+        id: self-service-enrollment-flow
         identifiers:
           slug: self-service-enrollment
         attrs:
@@ -117,31 +118,31 @@ data:
           name: self-service-enrollment-user-login
       - model: authentik_flows.flowstagebinding
         identifiers:
-          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          target: !KeyOf self-service-enrollment-flow
           stage: !KeyOf self-service-enrollment-prompt-credentials
           order: 10
       - model: authentik_flows.flowstagebinding
         identifiers:
-          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          target: !KeyOf self-service-enrollment-flow
           stage: !KeyOf self-service-enrollment-prompt-profile
           order: 11
       - model: authentik_flows.flowstagebinding
         identifiers:
-          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          target: !KeyOf self-service-enrollment-flow
           stage: !KeyOf self-service-enrollment-user-write
           order: 20
       - model: authentik_flows.flowstagebinding
         identifiers:
-          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          target: !KeyOf self-service-enrollment-flow
           stage: !KeyOf self-service-enrollment-email-verification
           order: 30
       - model: authentik_flows.flowstagebinding
         identifiers:
-          target: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          target: !KeyOf self-service-enrollment-flow
           stage: !KeyOf self-service-enrollment-user-login
           order: 100
       - model: authentik_stages_identification.identificationstage
         identifiers:
           name: default-authentication-identification
         attrs:
-          enrollment_flow: !Find [authentik_flows.flow, [slug, self-service-enrollment]]
+          enrollment_flow: !KeyOf self-service-enrollment-flow
