@@ -1,0 +1,120 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authentik-blueprints-sciflow-invitation
+  namespace: authentik
+data:
+  sciflow-invitation-enrollment.yaml: |
+    version: 1
+    metadata:
+      name: SciFlow Invitation Enrollment
+      labels:
+        blueprints.goauthentik.io/instantiate: "true"
+    entries:
+      - identifiers:
+          slug: sciflow-invitation-enrollment-flow
+        id: sciflow-invitation-flow
+        model: authentik_flows.flow
+        attrs:
+          name: SciFlow Invitation Enrollment Flow
+          title: Complete your SciFlow invitation
+          designation: enrollment
+          authentication: require_unauthenticated
+      - identifiers:
+          name: sciflow-invitation-stage
+        id: sciflow-invitation-stage
+        model: authentik_stages_invitation.invitationstage
+        attrs:
+          continue_flow_without_invitation: false
+      - identifiers:
+          name: sciflow-invitation-field-username
+        id: sciflow-invitation-field-username
+        model: authentik_stages_prompt.prompt
+        attrs:
+          field_key: username
+          label: Username
+          type: hidden
+          required: true
+          initial_value: return prompt_context.get("email", "")
+          initial_value_expression: true
+          order: 0
+      - identifiers:
+          name: sciflow-invitation-field-email
+        id: sciflow-invitation-field-email
+        model: authentik_stages_prompt.prompt
+        attrs:
+          field_key: email
+          label: Email
+          type: text_read_only
+          required: true
+          initial_value: return prompt_context.get("email", "")
+          initial_value_expression: true
+          order: 1
+      - identifiers:
+          name: sciflow-invitation-field-password
+        id: sciflow-invitation-field-password
+        model: authentik_stages_prompt.prompt
+        attrs:
+          field_key: password
+          label: Password
+          type: password
+          required: true
+          placeholder: Password
+          placeholder_expression: false
+          order: 2
+      - identifiers:
+          name: sciflow-invitation-field-password-repeat
+        id: sciflow-invitation-field-password-repeat
+        model: authentik_stages_prompt.prompt
+        attrs:
+          field_key: password_repeat
+          label: Password (repeat)
+          type: password
+          required: true
+          placeholder: Password (repeat)
+          placeholder_expression: false
+          order: 3
+      - identifiers:
+          name: sciflow-invitation-prompt
+        id: sciflow-invitation-prompt
+        model: authentik_stages_prompt.promptstage
+        attrs:
+          fields:
+            - !KeyOf sciflow-invitation-field-username
+            - !KeyOf sciflow-invitation-field-email
+            - !KeyOf sciflow-invitation-field-password
+            - !KeyOf sciflow-invitation-field-password-repeat
+      - identifiers:
+          name: sciflow-invitation-user-write
+        id: sciflow-invitation-user-write
+        model: authentik_stages_user_write.userwritestage
+        attrs:
+          create_users_as_inactive: false
+          user_creation_mode: always_create
+      - identifiers:
+          name: sciflow-invitation-user-login
+        id: sciflow-invitation-user-login
+        model: authentik_stages_user_login.userloginstage
+      - identifiers:
+          target: !KeyOf sciflow-invitation-flow
+          stage: !KeyOf sciflow-invitation-stage
+          order: 5
+        model: authentik_flows.flowstagebinding
+        attrs:
+          evaluate_on_plan: true
+          re_evaluate_policies: true
+      - identifiers:
+          target: !KeyOf sciflow-invitation-flow
+          stage: !KeyOf sciflow-invitation-prompt
+          order: 10
+        model: authentik_flows.flowstagebinding
+      - identifiers:
+          target: !KeyOf sciflow-invitation-flow
+          stage: !KeyOf sciflow-invitation-user-write
+          order: 20
+        model: authentik_flows.flowstagebinding
+      - identifiers:
+          target: !KeyOf sciflow-invitation-flow
+          stage: !KeyOf sciflow-invitation-user-login
+          order: 100
+        model: authentik_flows.flowstagebinding

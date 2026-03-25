@@ -9,6 +9,7 @@ resources:
   - harbor-blueprint-configmap.yaml
   - oauth2-proxy-browser-blueprint-configmap.yaml
   - self-service-blueprint-configmap.yaml
+  - sciflow-invitation-blueprint-configmap.yaml
   - helmrepository.yaml
   - helmrelease.yaml
   - localhost-ingress.yaml

@@ -40,6 +40,7 @@ spec:
         - authentik-blueprints-harbor
         - authentik-blueprints-oauth2-proxy-browser
         - authentik-blueprints-self-service
+        - authentik-blueprints-sciflow-invitation
     authentik:
       existingSecret:
         secretName: authentik-config
@@ -47,16 +48,9 @@ spec:
       enabled: false
     server:
       replicas: 1
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: node-role.kubernetes.io/control-plane
-                    operator: Exists
-              - matchExpressions:
-                  - key: node-role.kubernetes.io/master
-                    operator: Exists
+      nodeSelector:
+        kubernetes.io/hostname: savior-6fc31951
+      affinity: {}
       ingress:
         enabled: false
       metrics:
@@ -72,16 +66,9 @@ spec:
           memory: 1Gi
     worker:
       replicas: 1
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: node-role.kubernetes.io/control-plane
-                    operator: Exists
-              - matchExpressions:
-                  - key: node-role.kubernetes.io/master
-                    operator: Exists
+      nodeSelector:
+        kubernetes.io/hostname: savior-6fc31951
+      affinity: {}
       metrics:
         enabled: true
         serviceMonitor:
