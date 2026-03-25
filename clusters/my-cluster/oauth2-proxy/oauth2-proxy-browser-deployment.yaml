@@ -38,6 +38,7 @@ spec:
             - --pass-authorization-header=true
             - --pass-user-headers=true
             - --set-xauthrequest=true
+            - --set-authorization-header=true
           envFrom:
             - secretRef:
                 name: oauth2-proxy-browser
