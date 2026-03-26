@@ -12,4 +12,5 @@ statusUpdater:
 draPlugin:
   enabled: true
   kubeletPlugin:
-    nodeSelector: {}
+    nodeSelector:
+      nvidia.com/gpu.deploy.device-plugin: "true"
