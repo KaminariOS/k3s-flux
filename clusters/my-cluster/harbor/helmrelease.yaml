@@ -24,6 +24,25 @@ spec:
       retries: 3
       remediateLastFailure: true
       strategy: rollback
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              kind: Deployment
+              labelSelector: app=harbor
+            patch: |
+              - op: add
+                path: /spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/hostname: savior-6fc31951
+          - target:
+              kind: StatefulSet
+              labelSelector: app=harbor
+            patch: |
+              - op: add
+                path: /spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/hostname: savior-6fc31951
   valuesFrom:
     - kind: Secret
       name: harbor-db
