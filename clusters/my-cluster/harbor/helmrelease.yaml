@@ -29,20 +29,60 @@ spec:
         patches:
           - target:
               kind: Deployment
-              labelSelector: app=harbor
+              name: harbor-core
             patch: |
               - op: add
                 path: /spec/template/spec/nodeSelector
                 value:
                   kubernetes.io/hostname: savior-6fc31951
           - target:
-              kind: StatefulSet
-              labelSelector: app=harbor
+              kind: Deployment
+              name: harbor-nginx
             patch: |
               - op: add
                 path: /spec/template/spec/nodeSelector
                 value:
                   kubernetes.io/hostname: savior-6fc31951
+          - target:
+              kind: Deployment
+              name: harbor-portal
+            patch: |
+              - op: add
+                path: /spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/hostname: savior-6fc31951
+          - target:
+              kind: Deployment
+              name: harbor-jobservice
+            patch: |
+              - op: add
+                path: /spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/hostname: thinker-e8f3f057
+          - target:
+              kind: Deployment
+              name: harbor-registry
+            patch: |
+              - op: add
+                path: /spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/hostname: thinker-e8f3f057
+          - target:
+              kind: StatefulSet
+              name: harbor-redis
+            patch: |
+              - op: add
+                path: /spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/hostname: thinker-e8f3f057
+          - target:
+              kind: StatefulSet
+              name: harbor-trivy
+            patch: |
+              - op: add
+                path: /spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/hostname: thinker-e8f3f057
   valuesFrom:
     - kind: Secret
       name: harbor-db
