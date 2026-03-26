@@ -1,9 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: fake-gpu-operator
+  name: nvidia
   namespace: gpu-operator
 spec:
   interval: 1h
-  url: oci://ghcr.io/run-ai/fake-gpu-operator
-  type: oci
+  url: https://helm.ngc.nvidia.com/nvidia

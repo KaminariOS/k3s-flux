@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Node
-metadata:
-  name: savior-6fc31951
-  labels:
-    nvidia.com/gpu.deploy.dra-plugin-gpu: "true"
-    run.ai/simulated-gpu-node-pool: savior
