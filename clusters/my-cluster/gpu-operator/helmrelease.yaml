@@ -21,5 +21,7 @@ spec:
   values:
     driver:
       enabled: false
+    hostPaths:
+      driverInstallDir: /run/opengl-driver
     toolkit:
       enabled: false
