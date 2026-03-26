@@ -5,23 +5,12 @@ metadata:
   namespace: gpu-operator
 spec:
   interval: 10m
-  chart:
-    spec:
-      chart: gpu-operator
-      version: "v25.10.1"
-      sourceRef:
-        kind: HelmRepository
-        name: nvidia
-        namespace: gpu-operator
+  chartRef:
+    kind: OCIRepository
+    name: fake-gpu-operator
+    namespace: gpu-operator
   install:
     createNamespace: false
-    crds: CreateReplace
-  upgrade:
-    crds: CreateReplace
-  values:
-    driver:
-      enabled: false
-    hostPaths:
-      driverInstallDir: /run/nvidia/driver-root
-    toolkit:
-      enabled: false
+  valuesFrom:
+    - kind: ConfigMap
+      name: fake-gpu-operator-values

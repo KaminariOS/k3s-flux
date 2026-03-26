@@ -1,0 +1,13 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: fake-gpu-operator
+  namespace: gpu-operator
+spec:
+  interval: 1h
+  url: oci://ghcr.io/run-ai/fake-gpu-operator/fake-gpu-operator
+  ref:
+    semver: "0.0.74"
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
