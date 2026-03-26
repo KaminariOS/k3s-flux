@@ -22,6 +22,6 @@ spec:
     driver:
       enabled: false
     hostPaths:
-      driverInstallDir: /run/opengl-driver
+      driverInstallDir: /run/nvidia/driver-root
     toolkit:
       enabled: false
