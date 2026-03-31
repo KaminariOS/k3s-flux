@@ -21,7 +21,7 @@ spec:
         kubernetes.io/arch: amd64
       containers:
         - name: policy
-          image: ghcr.io/yuanwuzhi/sciflow-policy:sha-6f6163cf03c0
+          image: ghcr.io/yuanwuzhi/sciflow-policy:sha-65fafa6bb8e4
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
