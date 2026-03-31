@@ -26,6 +26,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: sciflow-config
+            - secretRef:
+                name: sciflow-db
+            - secretRef:
+                name: sciflow-policy-authentik
+            - secretRef:
+                name: sciflow-policy-smtp
           env:
             - name: BIND_ADDR
               value: 0.0.0.0:8080

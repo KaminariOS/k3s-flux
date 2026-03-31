@@ -31,6 +31,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: sciflow-config
+            - secretRef:
+                name: sciflow-db
           env:
             - name: BIND_ADDR
               value: 0.0.0.0:8080
