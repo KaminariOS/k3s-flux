@@ -1,9 +1,13 @@
 topology:
   nodePools:
-    default:
-      gpuProduct: Tesla-K80
-      gpuCount: 8
-      gpuMemory: 11441
+    h100:
+      gpuProduct: NVIDIA H100-SXM5-80GB
+      gpuCount: 1
+      gpuMemory: 81920
+    h200:
+      gpuProduct: NVIDIA H200-SXM5
+      gpuCount: 2
+      gpuMemory: 144384
   nodePoolLabelKey: run.ai/simulated-gpu-node-pool
 
 statusUpdater:
