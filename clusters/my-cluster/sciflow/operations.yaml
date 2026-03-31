@@ -22,7 +22,7 @@ spec:
         kubernetes.io/arch: amd64
       containers:
         - name: operations
-          image: ghcr.io/yuanwuzhi/sciflow-operations:sha-c24fc3e729c4
+          image: ghcr.io/yuanwuzhi/sciflow-operations:sha-6f6163cf03c0
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
