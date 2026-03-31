@@ -16,7 +16,7 @@ spec:
       serviceAccountName: hami-node-status-patcher
       containers:
         - name: kubectl
-          image: docker.io/bitnami/kubectl:1.35.2
+          image: docker.io/rancher/kubectl:v1.35.2
           command:
             - /bin/sh
             - /scripts/patch-node-status.sh
