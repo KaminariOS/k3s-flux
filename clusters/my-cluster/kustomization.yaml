@@ -10,7 +10,7 @@ resources:
   # - telepresence
   - redis
   - kafka
-  - gpu-operator
+  - hami
   - harbor
   - rustfs
   - sciflow

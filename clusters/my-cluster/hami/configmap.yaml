@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hami-node-status-patcher
+  namespace: hami-system
+data:
+  patch-node-status.sh: |
+    #!/bin/sh
+    set -eu
+
+    while true; do
+      kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{" "}{.metadata.annotations.hami\.io/mock-gpu-count}{"\n"}{end}' \
+        | while IFS=' ' read -r node count; do
+            if [ -z "${count:-}" ]; then
+              continue
+            fi
+
+            kubectl patch node "$node" --subresource=status --type merge \
+              -p "{\"status\":{\"capacity\":{\"nvidia.com/gpu\":\"$count\"},\"allocatable\":{\"nvidia.com/gpu\":\"$count\"}}}"
+          done
+
+      sleep 30
+    done

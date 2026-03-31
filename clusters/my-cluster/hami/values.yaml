@@ -1,0 +1,23 @@
+fullnameOverride: hami
+namespaceOverride: hami-system
+
+scheduler:
+  nodeLabelSelector:
+    gpu: "on"
+  kubeScheduler:
+    image:
+      registry: registry.k8s.io
+      repository: kube-scheduler
+      tag: v1.35.2
+  service:
+    type: ClusterIP
+
+devicePlugin:
+  enabled: false
+  deviceSplitCount: 10
+
+mockDevicePlugin:
+  enabled: true
+
+dra:
+  enabled: false
