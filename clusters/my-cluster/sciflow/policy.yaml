@@ -35,6 +35,16 @@ spec:
           env:
             - name: BIND_ADDR
               value: 0.0.0.0:8080
+            - name: AUTHENTIK_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: sciflow-config
+                  key: AUTHENTIK_BASE_URL
+            - name: AUTHENTIK_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: sciflow-config
+                  key: AUTHENTIK_API_URL
           ports:
             - name: http
               containerPort: 8080

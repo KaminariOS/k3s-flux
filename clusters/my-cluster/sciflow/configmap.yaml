@@ -6,6 +6,7 @@ metadata:
 data:
   RUST_LOG: info,tower_http=info
   POD_NAMESPACE: sciflow
+  PUBLIC_BASE_URL: http://localhost/sciflow
   IMAGE_REGISTRY_HOST: harbor-registry.harbor.svc.cluster.local:5000
   REGISTRY_BASE_URL: http://harbor-registry.harbor.svc.cluster.local:5000
   IMAGE_OPERATION_WORKER_IMAGE: ghcr.io/yuanwuzhi/sciflow-image-worker:fix-20260320-0144
@@ -18,3 +19,5 @@ data:
   AUTH_HEADER_EMAIL: x-auth-request-email
   AUTH_HEADER_GROUPS: x-auth-request-groups
   AUTH_HEADER_SUBJECT: x-auth-request-user
+  AUTHENTIK_BASE_URL: http://localhost/authentik
+  AUTHENTIK_API_URL: http://authentik-server.authentik.svc.cluster.local/api/v3
