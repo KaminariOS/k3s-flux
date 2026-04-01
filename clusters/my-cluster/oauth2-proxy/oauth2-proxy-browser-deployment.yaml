@@ -21,11 +21,11 @@ spec:
             - --http-address=0.0.0.0:4180
             - --proxy-prefix=/oauth2
             - --provider=oidc
-            - --oidc-issuer-url=http://authentik-server.authentik.svc.cluster.local/
+            - --oidc-issuer-url=http://authentik-server.authentik.svc.cluster.local/authentik/
             - --skip-oidc-discovery=true
-            - --redeem-url=http://authentik-server.authentik.svc.cluster.local/application/o/token/
-            - --oidc-jwks-url=http://authentik-server.authentik.svc.cluster.local/application/o/oauth2-proxy-browser/jwks/
-            - --profile-url=http://authentik-server.authentik.svc.cluster.local/application/o/userinfo/
+            - --redeem-url=http://authentik-server.authentik.svc.cluster.local/authentik/application/o/token/
+            - --oidc-jwks-url=http://authentik-server.authentik.svc.cluster.local/authentik/application/o/oauth2-proxy-browser/jwks/
+            - --profile-url=http://authentik-server.authentik.svc.cluster.local/authentik/application/o/userinfo/
             - --reverse-proxy=true
             - --email-domain=*
             - --upstream=static://202
