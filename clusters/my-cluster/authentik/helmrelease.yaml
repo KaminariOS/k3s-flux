@@ -53,6 +53,15 @@ spec:
       affinity: {}
       ingress:
         enabled: false
+      livenessProbe:
+        httpGet:
+          path: /authentik/-/health/live/
+      readinessProbe:
+        httpGet:
+          path: /authentik/-/health/ready/
+      startupProbe:
+        httpGet:
+          path: /authentik/-/health/live/
       metrics:
         enabled: true
         serviceMonitor:
