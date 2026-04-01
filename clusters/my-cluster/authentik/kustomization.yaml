@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - secret.yaml
+  - localhost-authentik-middleware.yaml
   - grafana-oauth-secret.yaml
   - harbor-oauth-secret.yaml
   - grafana-blueprint-configmap.yaml
