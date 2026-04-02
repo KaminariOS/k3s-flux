@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: harbor-registry
+  name: registry-v2
   namespace: harbor
 spec:
   accessModes:

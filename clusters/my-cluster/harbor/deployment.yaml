@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: harbor-registry
+  name: registry-v2
   namespace: harbor
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: harbor-registry
+      app.kubernetes.io/name: registry-v2
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: harbor-registry
+        app.kubernetes.io/name: registry-v2
     spec:
       containers:
         - name: registry
@@ -28,4 +28,4 @@ spec:
       volumes:
         - name: registry-storage
           persistentVolumeClaim:
-            claimName: harbor-registry
+            claimName: registry-v2
