@@ -4,7 +4,8 @@ resources:
   - namespace.yaml
   - configmap.yaml
   - gateway.yaml
-  - orchestrator.yaml
+  - orchestrator-api.yaml
+  - orchestrator-controller.yaml
   - policy.yaml
   - images.yaml
   - operations.yaml
