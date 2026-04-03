@@ -15,6 +15,7 @@ spec:
         app.kubernetes.io/name: orchestrator-api
         app.kubernetes.io/part-of: sciflow
     spec:
+      serviceAccountName: default
       imagePullSecrets:
         - name: sciflow-ghcr
       nodeSelector:
