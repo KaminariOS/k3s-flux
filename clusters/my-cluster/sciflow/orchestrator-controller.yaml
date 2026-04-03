@@ -22,7 +22,7 @@ spec:
         kubernetes.io/arch: amd64
       containers:
         - name: orchestrator-controller
-          image: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller:sha-2b07086d9e17
+          image: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller:sha-526b625296f0
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
