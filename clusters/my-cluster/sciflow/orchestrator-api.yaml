@@ -15,14 +15,13 @@ spec:
         app.kubernetes.io/name: orchestrator-api
         app.kubernetes.io/part-of: sciflow
     spec:
-      serviceAccountName: sciflow-orchestrator
       imagePullSecrets:
         - name: sciflow-ghcr
       nodeSelector:
         kubernetes.io/arch: amd64
       containers:
         - name: orchestrator-api
-          image: ghcr.io/yuanwuzhi/sciflow-orchestrator-api:sha-ee2dc8bba3e2
+          image: ghcr.io/yuanwuzhi/sciflow-orchestrator-api:sha-2b07086d9e17
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
