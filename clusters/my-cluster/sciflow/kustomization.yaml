@@ -17,13 +17,13 @@ images:
   - name: ghcr.io/yuanwuzhi/sciflow-gateway
     newTag: sha-526b625296f0
   - name: ghcr.io/yuanwuzhi/sciflow-images
-    newTag: sha-526b625296f0
+    newTag: fix-20260405-1644
   - name: ghcr.io/yuanwuzhi/sciflow-operations
     newTag: sha-526b625296f0
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-api
-    newTag: sha-526b625296f0
+    newTag: fix-20260405-1644
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller
-    newTag: sha-526b625296f0
+    newTag: fix-20260405-1644
   - name: ghcr.io/yuanwuzhi/sciflow-policy
     newTag: sha-526b625296f0
   - name: ghcr.io/yuanwuzhi/sciflow-reporting
