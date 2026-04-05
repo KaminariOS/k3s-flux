@@ -26,7 +26,7 @@ spec:
             secretName: sciflow-registry-auth
       containers:
         - name: images
-          image: ghcr.io/yuanwuzhi/sciflow-images:sha-65fafa6bb8e4
+          image: ghcr.io/yuanwuzhi/sciflow-images
           imagePullPolicy: Always
           envFrom:
             - configMapRef:

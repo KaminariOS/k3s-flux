@@ -21,7 +21,7 @@ spec:
         kubernetes.io/arch: amd64
       containers:
         - name: gateway
-          image: ghcr.io/yuanwuzhi/sciflow-gateway:latest
+          image: ghcr.io/yuanwuzhi/sciflow-gateway
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
