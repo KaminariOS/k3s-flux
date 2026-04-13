@@ -48,8 +48,6 @@ spec:
       enabled: false
     server:
       replicas: 1
-      nodeSelector:
-        kubernetes.io/hostname: savior-6fc31951
       affinity: {}
       ingress:
         enabled: false
@@ -75,8 +73,6 @@ spec:
           memory: 1Gi
     worker:
       replicas: 1
-      nodeSelector:
-        kubernetes.io/hostname: savior-6fc31951
       affinity: {}
       metrics:
         enabled: true
