@@ -20,4 +20,4 @@ data:
   AUTH_HEADER_GROUPS: x-auth-request-groups
   AUTH_HEADER_SUBJECT: x-auth-request-user
   AUTHENTIK_BASE_URL: http://localhost/authentik
-  AUTHENTIK_API_URL: http://authentik-server.authentik.svc.cluster.local/api/v3
+  AUTHENTIK_API_URL: http://authentik-server.authentik.svc.cluster.local/authentik/api/v3
