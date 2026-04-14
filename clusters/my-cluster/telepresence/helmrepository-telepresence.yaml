@@ -1,4 +1,4 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: telepresence-oss
@@ -6,4 +6,5 @@ metadata:
 spec:
   url: oci://ghcr.io/telepresenceio
   type: oci
+  provider: generic
   interval: 5m
