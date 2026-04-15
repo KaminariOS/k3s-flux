@@ -19,6 +19,10 @@ spec:
         - name: sciflow-ghcr
       nodeSelector:
         kubernetes.io/arch: amd64
+      volumes:
+        - name: sciflow-storage
+          persistentVolumeClaim:
+            claimName: sciflow-storage
       containers:
         - name: policy
           image: ghcr.io/yuanwuzhi/sciflow-policy
@@ -48,6 +52,9 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+          volumeMounts:
+            - name: sciflow-storage
+              mountPath: /var/lib/sciflow-storage
           readinessProbe:
             httpGet:
               path: /readyz

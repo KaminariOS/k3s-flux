@@ -20,6 +20,10 @@ spec:
         - name: sciflow-ghcr
       nodeSelector:
         kubernetes.io/arch: amd64
+      volumes:
+        - name: sciflow-storage
+          persistentVolumeClaim:
+            claimName: sciflow-storage
       containers:
         - name: orchestrator-controller
           image: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller
@@ -29,6 +33,9 @@ spec:
                 name: sciflow-config
             - secretRef:
                 name: sciflow-db
+          volumeMounts:
+            - name: sciflow-storage
+              mountPath: /var/lib/sciflow-storage
 ---
 apiVersion: v1
 kind: ServiceAccount
