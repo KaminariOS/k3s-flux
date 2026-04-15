@@ -75,3 +75,13 @@ spec:
   stripPrefix:
     prefixes:
       - /sciflow/reporting
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-instance-code-server
+  namespace: sciflow
+spec:
+  stripPrefix:
+    prefixesRegex:
+      - /instances/[^/]+/code-server
