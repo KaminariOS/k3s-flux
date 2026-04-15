@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sciflow-storage-bootstrap
+  namespace: sciflow
+spec:
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: OnFailure
+      volumes:
+        - name: sciflow-storage
+          persistentVolumeClaim:
+            claimName: sciflow-storage
+      containers:
+        - name: bootstrap
+          image: alpine:3.21
+          command:
+            - /bin/sh
+            - -lc
+          args:
+            - mkdir -p /mnt/shared /mnt/.sciflow /mnt/workspaces && chmod 755 /mnt/shared /mnt/.sciflow /mnt/workspaces
+          volumeMounts:
+            - name: sciflow-storage
+              mountPath: /mnt

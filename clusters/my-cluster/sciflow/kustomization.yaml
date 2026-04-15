@@ -5,6 +5,7 @@ resources:
   - configmap.yaml
   - secret.yaml
   - storage-pvc.yaml
+  - storage-bootstrap.yaml
   - gateway.yaml
   - orchestrator-api.yaml
   - orchestrator-controller.yaml
