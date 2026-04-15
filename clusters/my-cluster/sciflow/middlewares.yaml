@@ -82,6 +82,6 @@ metadata:
   name: strip-instance-code-server
   namespace: sciflow
 spec:
-  stripPrefix:
-    prefixesRegex:
+  stripPrefixRegex:
+    regex:
       - /instances/[^/]+/code-server
