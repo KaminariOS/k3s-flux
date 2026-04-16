@@ -23,9 +23,9 @@ images:
   - name: ghcr.io/yuanwuzhi/sciflow-operations
     newTag: sha-bf20cb0a278b
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-api
-    newTag: sha-a55d2b2475e3
+    newTag: sha-94250d8faa6d
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller
-    newTag: sha-a55d2b2475e3
+    newTag: sha-94250d8faa6d
   - name: ghcr.io/yuanwuzhi/sciflow-policy
     newTag: sha-a55d2b2475e3
   - name: ghcr.io/yuanwuzhi/sciflow-reporting
