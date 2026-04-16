@@ -119,6 +119,32 @@ spec:
                 message:
                   type: string
                   nullable: true
+                conditions:
+                  type: array
+                  nullable: true
+                  items:
+                    type: object
+                    required:
+                      - type
+                      - status
+                      - reason
+                      - message
+                      - lastTransitionTime
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                      reason:
+                        type: string
+                      message:
+                        type: string
+                      lastTransitionTime:
+                        type: string
+                      observedGeneration:
+                        type: integer
+                        format: int64
+                        nullable: true
                 podName:
                   type: string
                   nullable: true
