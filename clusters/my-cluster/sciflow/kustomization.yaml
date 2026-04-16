@@ -17,16 +17,16 @@ resources:
   - ingresses.yaml
 images:
   - name: ghcr.io/yuanwuzhi/sciflow-gateway
-    newTag: sha-a55d2b2475e3
+    digest: sha256:d853c44110173d2a6d60c45127539f87e33963fef7d0ad5bad8564092d4d8f14
   - name: ghcr.io/yuanwuzhi/sciflow-images
-    newTag: sha-bf20cb0a278b
+    digest: sha256:83cbc43d0c10e56359d948e94134ad7580ce1e092b814aaab60209b78f97d0a8
   - name: ghcr.io/yuanwuzhi/sciflow-operations
-    newTag: sha-bf20cb0a278b
+    digest: sha256:adb33e1fbe638936065030253cd66dcd00f976172a6c46cbd2eebfc0cb7edcd1
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-api
-    digest: sha256:03630a3ceca18aa253c05dbc225b95b14ace44dd5e1bd3bc269dee757343390c
+    digest: sha256:f847d846626fb7287146bea0769f666e861886d35aefdb0d04bfbfe5b5732632
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller
-    digest: sha256:ff95a8e2b904079f6bb83e574b5d8926a5b8c4b290a46c90d068b18c3855cc12
+    digest: sha256:fa93647d01bbf064f9344e2c93aa4258545593ffa2c2bdb6de196b50e2d47845
   - name: ghcr.io/yuanwuzhi/sciflow-policy
-    newTag: sha-a55d2b2475e3
+    digest: sha256:544a13f94abec98386da738d391a99b3829011c652cb3557a8d6aedfdc0895dc
   - name: ghcr.io/yuanwuzhi/sciflow-reporting
-    newTag: sha-526b625296f0
+    digest: sha256:9c993c82f09f3cb1d72f8cfc6a83e1fe98867c3f8c9101400b97d717d46d8c8b
