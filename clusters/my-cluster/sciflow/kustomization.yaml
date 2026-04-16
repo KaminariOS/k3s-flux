@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - namespace.yaml
+  - sciflowinstance-crd.yaml
   - configmap.yaml
   - secret.yaml
   - storage-pvc.yaml
@@ -23,9 +24,9 @@ images:
   - name: ghcr.io/yuanwuzhi/sciflow-operations
     digest: sha256:a8b9df6770f706f10322718c9a24dbf6ae28e2ea7790239ab8255b11a70ddeaf
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-api
-    digest: sha256:6909f5ade77240f0febdcc5076fe20805f7fa1b645f2c501a3d239a73716c34b
+    digest: sha256:38da242eb4ab2fc51d8ceadee4fe447117854d8efa18898e1f343d7224140372
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller
-    digest: sha256:b9c9c9af9f4e3c9193890c08641c6a6fa5491c9528ea85e0b58b9024437af071
+    digest: sha256:c26927bdf84956354379abe99b7fa2c95a5ca8ca82263fbbb4326c881d174ca0
   - name: ghcr.io/yuanwuzhi/sciflow-policy
     digest: sha256:9d120354e9c74e2f4e31cd389e4efb8059be883a0d23c1e639f1d3364f2ba7bb
   - name: ghcr.io/yuanwuzhi/sciflow-reporting

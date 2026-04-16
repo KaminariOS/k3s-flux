@@ -1,0 +1,157 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: sciflowinstances.sciflow.ai
+spec:
+  group: sciflow.ai
+  names:
+    categories:
+      - sciflow
+    kind: SciFlowInstance
+    listKind: SciFlowInstanceList
+    plural: sciflowinstances
+    shortNames:
+      - sfi
+    singular: sciflowinstance
+  scope: Namespaced
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      additionalPrinterColumns:
+        - jsonPath: .status.phase
+          name: Phase
+          type: string
+        - jsonPath: .spec.desiredState
+          name: Desired
+          type: string
+        - jsonPath: .spec.resources.gpuType
+          name: GPU
+          type: string
+        - jsonPath: .spec.ownerSubject
+          name: Owner
+          type: string
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required:
+                - currentImage
+                - gpuPoolKind
+                - instanceClass
+                - instanceId
+                - orgId
+                - ownerSubject
+                - requestId
+                - resources
+                - sshAuthorizedKeys
+                - templateImage
+                - templateSnapshot
+                - desiredState
+              properties:
+                instanceId:
+                  type: string
+                requestId:
+                  type: string
+                ownerSubject:
+                  type: string
+                orgId:
+                  type: string
+                projectId:
+                  type: string
+                  nullable: true
+                displayName:
+                  type: string
+                  nullable: true
+                templateHashId:
+                  type: string
+                  nullable: true
+                templateImage:
+                  type: string
+                templateSnapshot:
+                  x-kubernetes-preserve-unknown-fields: true
+                currentImage:
+                  type: string
+                sshAuthorizedKeys:
+                  type: array
+                  items:
+                    type: string
+                desiredState:
+                  type: string
+                instanceClass:
+                  type: string
+                gpuPoolKind:
+                  type: string
+                resources:
+                  type: object
+                  required:
+                    - cpuMillis
+                    - gpuCount
+                    - gpuFraction
+                    - gpuType
+                    - memoryBytes
+                  properties:
+                    gpuType:
+                      type: string
+                    gpuFraction:
+                      type: string
+                    gpuCount:
+                      type: integer
+                      format: int32
+                    cpuMillis:
+                      type: integer
+                      format: int32
+                    memoryBytes:
+                      type: integer
+                      format: int64
+                    diskBytes:
+                      type: integer
+                      format: int64
+                      nullable: true
+            status:
+              type: object
+              properties:
+                phase:
+                  type: string
+                  nullable: true
+                message:
+                  type: string
+                  nullable: true
+                podName:
+                  type: string
+                  nullable: true
+                serviceName:
+                  type: string
+                  nullable: true
+                sshServiceName:
+                  type: string
+                  nullable: true
+                sshHost:
+                  type: string
+                  nullable: true
+                sshPort:
+                  type: integer
+                  format: int32
+                  nullable: true
+                ingressName:
+                  type: string
+                  nullable: true
+                nodeName:
+                  type: string
+                  nullable: true
+                podPhase:
+                  type: string
+                  nullable: true
+                startedAt:
+                  type: string
+                  nullable: true
+                finishedAt:
+                  type: string
+                  nullable: true
+                lastSyncedAt:
+                  type: string
+                  nullable: true
+      subresources:
+        status: {}

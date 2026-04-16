@@ -63,6 +63,12 @@ rules:
   - apiGroups: ["networking.k8s.io"]
     resources: ["ingresses"]
     verbs: ["create", "get", "list", "watch", "delete"]
+  - apiGroups: ["sciflow.ai"]
+    resources: ["sciflowinstances"]
+    verbs: ["create", "get", "list", "watch", "patch", "delete"]
+  - apiGroups: ["sciflow.ai"]
+    resources: ["sciflowinstances/status"]
+    verbs: ["get", "patch", "update"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
