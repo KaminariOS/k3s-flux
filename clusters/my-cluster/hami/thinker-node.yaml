@@ -4,7 +4,8 @@ metadata:
   name: thinker-e8f3f057
   labels:
     gpu: "on"
+    gputype: "3060-vgpu"
   annotations:
-    hami.io/mock-gpu-count: "8"
+    hami.io/mock-gpu-count: "16"
     hami.io/node-nvidia-register: >-
-      [{"id":"GPU-H200-0","index":0,"count":8,"devmem":144384,"devcore":100,"type":"NVIDIA H200-SXM5","numa":0,"mode":"hami-core","health":true}]
+      [{"id":"GPU-H200-0","index":0,"count":8,"devmem":144384,"devcore":100,"type":"NVIDIA H200-SXM5","numa":0,"mode":"hami-core","health":true},{"id":"GPU-3060-0","index":1,"count":8,"devmem":12288,"devcore":100,"type":"3060","numa":0,"mode":"hami-core","health":true}]

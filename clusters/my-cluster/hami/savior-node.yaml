@@ -4,8 +4,7 @@ metadata:
   name: savior-6fc31951
   labels:
     gpu: "on"
-    gputype: "3060-vgpu"
   annotations:
-    hami.io/mock-gpu-count: "24"
+    hami.io/mock-gpu-count: "16"
     hami.io/node-nvidia-register: >-
-      [{"id":"GPU-H100-0","index":0,"count":8,"devmem":81920,"devcore":100,"type":"NVIDIA H100-SXM5-80GB","numa":0,"mode":"hami-core","health":true},{"id":"GPU-H100-1","index":1,"count":8,"devmem":81920,"devcore":100,"type":"NVIDIA H100-SXM5-80GB","numa":0,"mode":"hami-core","health":true},{"id":"GPU-3060-0","index":2,"count":8,"devmem":12288,"devcore":100,"type":"3060","numa":0,"mode":"hami-core","health":true}]
+      [{"id":"GPU-H100-0","index":0,"count":8,"devmem":81920,"devcore":100,"type":"NVIDIA H100-SXM5-80GB","numa":0,"mode":"hami-core","health":true},{"id":"GPU-H100-1","index":1,"count":8,"devmem":81920,"devcore":100,"type":"NVIDIA H100-SXM5-80GB","numa":0,"mode":"hami-core","health":true}]
