@@ -24,10 +24,10 @@ images:
   - name: ghcr.io/yuanwuzhi/sciflow-operations
     digest: sha256:acf6d4e4617a97d2b2144f9fd265327c21db4a297b63b5f111bd885a82144f23
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-api
-    digest: sha256:a4774af7ea5392c36e6f434e175b775fc39a628645a87ead42b40a14ab0ec178
+    digest: sha256:2b4759095aaa18bd0165ec6dddcf0231954f060a32ab31b31b677828af64b17e
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller
-    digest: sha256:8997560d14aa328d551f08c0a1f705e69735d5dc68c8f6e9138eb184546dea37
+    digest: sha256:b87bc8eefd2862d1fedd1e00455b90278936cbc53b1b3545c5553020c712e7ef
   - name: ghcr.io/yuanwuzhi/sciflow-policy
-    digest: sha256:40f115af9f9d344720c62be76d9f7860676f6a640347344cb6a9a7ac78011aef
+    digest: sha256:8c3ed14208403a6a0a21c5802b5d44b46aa7adc300af256127c6bf9d37666350
   - name: ghcr.io/yuanwuzhi/sciflow-reporting
     digest: sha256:d7d1f8ab089da5fbe5d7d2a2b1c2ef64f1b8dd4b36f35a6087bcc344b55482e5
