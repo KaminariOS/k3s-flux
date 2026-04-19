@@ -33,6 +33,9 @@ spec:
                 name: sciflow-config
             - secretRef:
                 name: sciflow-db
+          env:
+            - name: CONTROLLER_DEBUG_ENDPOINTS_ENABLED
+              value: "true"
           volumeMounts:
             - name: sciflow-storage
               mountPath: /var/lib/sciflow-storage
