@@ -7,6 +7,7 @@ resources:
   - secret.yaml
   - storage-pvc.yaml
   - storage-bootstrap.yaml
+  - frontend.yaml
   - gateway.yaml
   - orchestrator-api.yaml
   - orchestrator-controller.yaml
@@ -17,6 +18,8 @@ resources:
   - middlewares.yaml
   - ingresses.yaml
 images:
+  - name: ghcr.io/yuanwuzhi/sciflow-frontend
+    newTag: sha-4a39192fbe31
   - name: ghcr.io/yuanwuzhi/sciflow-gateway
     digest: sha256:456b0284fb362e12d7117740b7884b92c0920ec24865dcd7c7ebfcf20eb4088b
   - name: ghcr.io/yuanwuzhi/sciflow-images

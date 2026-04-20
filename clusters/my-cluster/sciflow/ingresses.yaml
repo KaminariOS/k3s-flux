@@ -1,6 +1,28 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: sciflow-frontend
+  namespace: sciflow
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: sciflow-oauth2-forward-auth@kubernetescrd,sciflow-strip-sciflow-console@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /sciflow-console
+            pathType: Prefix
+            backend:
+              service:
+                name: sciflow-frontend
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
   name: sciflow-gateway
   namespace: sciflow
   annotations:

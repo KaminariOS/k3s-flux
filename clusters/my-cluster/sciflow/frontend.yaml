@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sciflow-frontend
+  namespace: sciflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: frontend
+      app.kubernetes.io/part-of: sciflow
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: frontend
+        app.kubernetes.io/part-of: sciflow
+    spec:
+      imagePullSecrets:
+        - name: sciflow-ghcr
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      containers:
+        - name: frontend
+          image: ghcr.io/yuanwuzhi/sciflow-frontend
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sciflow-frontend
+  namespace: sciflow
+spec:
+  selector:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/part-of: sciflow
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
