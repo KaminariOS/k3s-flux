@@ -16,8 +16,6 @@ spec:
         app.kubernetes.io/part-of: sciflow
     spec:
       serviceAccountName: sciflow-operations
-      imagePullSecrets:
-        - name: sciflow-ghcr
       nodeSelector:
         kubernetes.io/arch: amd64
       containers:
@@ -63,8 +61,6 @@ kind: ServiceAccount
 metadata:
   name: sciflow-operations
   namespace: sciflow
-imagePullSecrets:
-  - name: sciflow-ghcr
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role

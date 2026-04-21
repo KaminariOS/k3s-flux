@@ -16,8 +16,6 @@ spec:
         app.kubernetes.io/part-of: sciflow
     spec:
       serviceAccountName: sciflow-orchestrator
-      imagePullSecrets:
-        - name: sciflow-ghcr
       nodeSelector:
         kubernetes.io/arch: amd64
       volumes:
@@ -45,8 +43,6 @@ kind: ServiceAccount
 metadata:
   name: sciflow-orchestrator
   namespace: sciflow
-imagePullSecrets:
-  - name: sciflow-ghcr
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role

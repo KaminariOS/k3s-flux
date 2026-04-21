@@ -15,8 +15,6 @@ spec:
         app.kubernetes.io/name: policy
         app.kubernetes.io/part-of: sciflow
     spec:
-      imagePullSecrets:
-        - name: sciflow-ghcr
       nodeSelector:
         kubernetes.io/arch: amd64
       volumes:

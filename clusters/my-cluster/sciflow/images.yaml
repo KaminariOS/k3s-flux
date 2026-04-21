@@ -16,8 +16,6 @@ spec:
         app.kubernetes.io/part-of: sciflow
     spec:
       serviceAccountName: sciflow-operations
-      imagePullSecrets:
-        - name: sciflow-ghcr
       nodeSelector:
         kubernetes.io/arch: amd64
       volumes:
