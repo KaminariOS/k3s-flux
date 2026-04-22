@@ -4,10 +4,14 @@ metadata:
   name: oauth2-proxy-browser
   namespace: authentik
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.middlewares: authentik-preserve-oauth2-proxy-browser-uri@kubernetescrd,authentik-strip-oauth2-proxy-browser@kubernetescrd
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - master161.yuanwuzhi.io
+      secretName: master161-yuanwuzhi-io-tls
   rules:
     - host: localhost
       http:

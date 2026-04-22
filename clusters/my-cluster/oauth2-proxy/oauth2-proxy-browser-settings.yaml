@@ -4,4 +4,4 @@ metadata:
   name: oauth2-proxy-browser-settings
   namespace: authentik
 data:
-  host: localhost
+  host: master161.yuanwuzhi.io
