@@ -1,6 +1,32 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: sciflow-frontend-redirect
+  namespace: sciflow
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.middlewares: sciflow-redirect-sciflow-console-slash@kubernetescrd
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - master161.yuanwuzhi.io
+      secretName: master161-yuanwuzhi-io-tls
+  rules:
+    - host: master161.yuanwuzhi.io
+      http:
+        paths:
+          - path: /sciflow-console
+            pathType: Exact
+            backend:
+              service:
+                name: sciflow-frontend
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
   name: sciflow-frontend
   namespace: sciflow
   annotations:
@@ -16,7 +42,7 @@ spec:
     - host: master161.yuanwuzhi.io
       http:
         paths:
-          - path: /sciflow-console
+          - path: /sciflow-console/
             pathType: Prefix
             backend:
               service:
