@@ -28,6 +28,6 @@ images:
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller
     newTag: sha-81c50d071b23
   - name: ghcr.io/yuanwuzhi/sciflow-policy
-    newTag: sha-81c50d071b23
+    newTag: sha-70c4b9189ba0
   - name: ghcr.io/yuanwuzhi/sciflow-reporting
-    newTag: sha-81c50d071b23
+    digest: sha256:d7d1f8ab089da5fbe5d7d2a2b1c2ef64f1b8dd4b36f35a6087bcc344b55482e5
