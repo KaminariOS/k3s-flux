@@ -9,7 +9,7 @@ data:
   PUBLIC_BASE_URL: https://master161.yuanwuzhi.io/sciflow
   IMAGE_REGISTRY_HOST: localhost:32000
   REGISTRY_BASE_URL: http://registry-v2.harbor.svc.cluster.local:5000
-  IMAGE_OPERATION_WORKER_IMAGE: ghcr.io/yuanwuzhi/sciflow-image-worker:sha-81c50d071b23
+  IMAGE_OPERATION_WORKER_IMAGE: ghcr.io/yuanwuzhi/sciflow-image-worker:sha-b17ba7a84032
   IMAGE_WORKER_EXECUTION_MODE: nerdctl
   IMAGE_WORKER_RUNTIME_CLI: nerdctl --address /run/k3s/containerd/containerd.sock -n k8s.io
   IMAGE_WORKER_CONTAINERD_SOCKET_PATH: /run/k3s/containerd/containerd.sock
