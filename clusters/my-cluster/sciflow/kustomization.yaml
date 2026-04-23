@@ -18,15 +18,15 @@ resources:
   - ingresses.yaml
 images:
   - name: ghcr.io/yuanwuzhi/sciflow-frontend
-    newTag: sha-63e6ef8d5a37
+    newTag: sha-742a59afc7ce
   - name: ghcr.io/yuanwuzhi/sciflow-images
     newTag: sha-81c50d071b23
   - name: ghcr.io/yuanwuzhi/sciflow-operations
     newTag: sha-81c50d071b23
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-api
-    newTag: sha-81c50d071b23
+    newTag: sha-742a59afc7ce
   - name: ghcr.io/yuanwuzhi/sciflow-orchestrator-controller
-    newTag: sha-81c50d071b23
+    newTag: sha-742a59afc7ce
   - name: ghcr.io/yuanwuzhi/sciflow-policy
     newTag: sha-81c50d071b23
   - name: ghcr.io/yuanwuzhi/sciflow-reporting
