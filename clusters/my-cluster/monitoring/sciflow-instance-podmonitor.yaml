@@ -1,0 +1,38 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: sciflow-instances
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: sciflow-instances
+    app.kubernetes.io/part-of: sciflow
+    release: monitoring-kube-prometheus-stack
+spec:
+  namespaceSelector:
+    matchNames:
+      - sciflow
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sciflow-instance
+      app.kubernetes.io/part-of: sciflow
+  podMetricsEndpoints:
+    - port: metrics
+      path: /metrics
+      interval: 30s
+      relabelings:
+        - action: replace
+          sourceLabels:
+            - __meta_kubernetes_pod_label_sciflow_ai_instance_id
+          targetLabel: sciflow_instance_id
+        - action: replace
+          sourceLabels:
+            - __meta_kubernetes_pod_label_sciflow_ai_instance_request_id
+          targetLabel: sciflow_instance_request_id
+        - action: replace
+          sourceLabels:
+            - __meta_kubernetes_pod_label_sciflow_ai_user_id
+          targetLabel: sciflow_user_id
+        - action: replace
+          sourceLabels:
+            - __meta_kubernetes_pod_label_sciflow_ai_org_id
+          targetLabel: sciflow_org_id
