@@ -20,7 +20,7 @@ spec:
             - /bin/sh
             - -lc
           args:
-            - mkdir -p /mnt/shared /mnt/.sciflow /mnt/workspaces && chmod 755 /mnt/shared /mnt/.sciflow /mnt/workspaces
+            - mkdir -p /mnt/shared /mnt/.sciflow /mnt/workspaces /mnt/orgs && chmod 755 /mnt/shared /mnt/.sciflow /mnt/workspaces /mnt/orgs
           volumeMounts:
             - name: sciflow-storage
               mountPath: /mnt

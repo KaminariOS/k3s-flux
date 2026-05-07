@@ -23,6 +23,7 @@ data:
   AUTHENTIK_API_URL: http://authentik-server.authentik.svc.cluster.local/authentik/api/v3
   STORAGE_WORKSPACE_ROOT: /var/lib/sciflow-storage/workspaces
   STORAGE_SHARED_ROOT: /var/lib/sciflow-storage/shared
+  STORAGE_ORG_ROOT: /var/lib/sciflow-storage/orgs
   INSTANCE_WORKSPACE_VOLUME_SOURCE: pvc
   INSTANCE_WORKSPACE_PVC_NAME: sciflow-storage
   INSTANCE_WORKSPACE_MOUNT_PATH: /workspace
@@ -31,6 +32,10 @@ data:
   INSTANCE_SHARED_PVC_NAME: sciflow-storage
   INSTANCE_SHARED_MOUNT_PATH: /share
   INSTANCE_SHARED_SUBPATH: shared
+  INSTANCE_ORG_VOLUME_SOURCE: pvc
+  INSTANCE_ORG_PVC_NAME: sciflow-storage
+  INSTANCE_ORG_MOUNT_PATH: /org
+  INSTANCE_ORG_SUBPATH_PREFIX: orgs
   INSTANCE_SYSTEM_VOLUME_SOURCE: pvc
   INSTANCE_SYSTEM_PVC_NAME: sciflow-storage
   INSTANCE_SYSTEM_MOUNT_PATH: /.sciflow
