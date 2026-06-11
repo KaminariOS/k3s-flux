@@ -18,7 +18,7 @@ resources:
   - ingresses.yaml
 images:
   - name: ghcr.io/yuanwuzhi/sciflow-frontend
-    newTag: sha-a9447fdca080
+    newTag: sha-e082f0497972
   - name: ghcr.io/yuanwuzhi/sciflow-images
     newTag: sha-81c50d071b23
   - name: ghcr.io/yuanwuzhi/sciflow-operations
