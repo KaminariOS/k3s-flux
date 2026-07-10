@@ -46,7 +46,7 @@ spec:
     postgresql:
       enabled: false
     server:
-      replicas: 1
+      replicas: 0
       affinity: {}
       ingress:
         enabled: false
@@ -71,7 +71,7 @@ spec:
         limits:
           memory: 1Gi
     worker:
-      replicas: 1
+      replicas: 0
       affinity: {}
       metrics:
         enabled: true
