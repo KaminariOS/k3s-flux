@@ -9,6 +9,5 @@ resources:
   - loki-helmrelease.yaml
   - tempo-helmrelease.yaml
   - alloy-helmrelease.yaml
-  - sciflow-instance-podmonitor.yaml
   - localhost-grafana-middleware.yaml
   - localhost-grafana-ingress.yaml

@@ -9,8 +9,6 @@ resources:
   - infrastructure
   - telepresence
   - redis
-  - kafka
   - hami
   - harbor
   - rustfs
-  - sciflow

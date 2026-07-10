@@ -87,30 +87,6 @@ spec:
             }
 
             rule {
-              source_labels = ["__meta_kubernetes_pod_label_sciflow_ai_instance_id"]
-              action        = "replace"
-              target_label  = "sciflow_instance_id"
-            }
-
-            rule {
-              source_labels = ["__meta_kubernetes_pod_label_sciflow_ai_instance_request_id"]
-              action        = "replace"
-              target_label  = "sciflow_instance_request_id"
-            }
-
-            rule {
-              source_labels = ["__meta_kubernetes_pod_label_sciflow_ai_user_id"]
-              action        = "replace"
-              target_label  = "sciflow_user_id"
-            }
-
-            rule {
-              source_labels = ["__meta_kubernetes_pod_label_sciflow_ai_org_id"]
-              action        = "replace"
-              target_label  = "sciflow_org_id"
-            }
-
-            rule {
               source_labels = ["__meta_kubernetes_namespace", "__meta_kubernetes_pod_container_name"]
               action        = "replace"
               target_label  = "job"

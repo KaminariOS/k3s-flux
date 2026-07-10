@@ -40,7 +40,6 @@ spec:
         - authentik-blueprints-harbor
         - authentik-blueprints-oauth2-proxy-browser
         - authentik-blueprints-self-service
-        - authentik-blueprints-sciflow-invitation
     authentik:
       existingSecret:
         secretName: authentik-config
