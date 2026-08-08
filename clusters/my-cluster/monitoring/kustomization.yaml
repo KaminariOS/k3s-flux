@@ -4,6 +4,7 @@ resources:
   - namespace.yaml
   - grafana-oauth-secret.yaml
   - helmrepository-grafana.yaml
+  - helmrepository-grafana-community.yaml
   - helmrepository.yaml
   - helmrelease.yaml
   - loki-helmrelease.yaml

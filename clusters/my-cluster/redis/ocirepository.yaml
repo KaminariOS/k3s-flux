@@ -6,7 +6,7 @@ spec:
   interval: 1h
   url: oci://registry-1.docker.io/bitnamicharts/redis
   ref:
-    semver: "23.2.12"
+    semver: "28.0.1"
   layerSelector:
     mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
     operation: copy
