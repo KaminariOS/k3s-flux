@@ -15,6 +15,8 @@ spec:
       enabled: true
       password: mysecurepassword
     master:
+      nodeSelector:
+        kubernetes.io/hostname: savior-6fc31951
       persistence:
         enabled: true
         size: 2Gi

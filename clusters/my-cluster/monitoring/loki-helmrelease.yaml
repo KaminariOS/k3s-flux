@@ -39,6 +39,8 @@ spec:
       ruler:
         enable_api: true
     singleBinary:
+      nodeSelector:
+        kubernetes.io/hostname: savior-6fc31951
       replicas: 1
       persistence:
         enabled: true

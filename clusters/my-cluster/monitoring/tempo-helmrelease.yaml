@@ -24,6 +24,8 @@ spec:
           backend: local
           local:
             path: /var/tempo/traces
+    nodeSelector:
+      kubernetes.io/hostname: savior-6fc31951
     persistence:
       enabled: true
       size: 10Gi
