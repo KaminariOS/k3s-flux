@@ -1,0 +1,38 @@
+name: Validate manifests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  manifests:
+    name: Kubernetes and Flux manifests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up yq
+        uses: fluxcd/pkg/actions/yq@main
+
+      - name: Set up kubeconform
+        uses: fluxcd/pkg/actions/kubeconform@main
+
+      - name: Set up Kustomize
+        uses: fluxcd/pkg/actions/kustomize@main
+        with:
+          version: 5.7.1
+
+      - name: Validate manifests
+        run: bash ./scripts/validate.sh
